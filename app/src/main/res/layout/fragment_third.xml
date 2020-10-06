@@ -4,12 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment">
+    tools:context=".ThirdFragment">
 
     <RelativeLayout
+        android:id="@+id/thirdFragLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
