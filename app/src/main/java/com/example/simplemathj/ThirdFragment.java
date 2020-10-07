@@ -34,8 +34,8 @@ public class ThirdFragment extends Fragment {
 
 //        RelativeLayout layout = view.findViewById(R.id.thirdFragLayout);
 //        int equationPosition = getResources().getDisplayMetrics().heightPixels/3;
-        EditText eq = view.findViewById(R.id.editTextNumber);
-        eq.setText(generateNumbers() + " X " + generateNumbers());
+        EditText eq = view.findViewById(R.id.editTextQuestion);
+        eq.setText(generateNumbers() + " X " + generateNumbers() + " = ");
 
 
 //        view.findViewById(R.id.axb).setOnClickListener(new View.OnClickListener() {
