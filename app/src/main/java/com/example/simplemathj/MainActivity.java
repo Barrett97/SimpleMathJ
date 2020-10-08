@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
+    public int state = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,5 +72,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setState(int a) {
+        state = a;
+    }
+
+    public int getState() {
+        return state;
     }
 }

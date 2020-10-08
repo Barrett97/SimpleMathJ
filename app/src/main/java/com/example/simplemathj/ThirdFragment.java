@@ -31,13 +31,14 @@ public class ThirdFragment extends Fragment {
 
     Button nextButton;
     EditText eq, ans;
-    int a, b;
+    int a, b, state;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        state = ((MainActivity)getActivity()).getState();
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_third, container, false);
     }
@@ -52,78 +53,81 @@ public class ThirdFragment extends Fragment {
         nextButton = view.findViewById(R.id.nextQ);
         nextButton.setVisibility(View.INVISIBLE);
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                eq.setBackgroundColor(Color.WHITE);
-                nextQuestion();
-                nextButton.setVisibility(View.INVISIBLE);
-                ans.requestFocus();
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-            }
-        });
-
-        nextQuestion();
-
+        // This triggers the keyboard to appear
         ans.requestFocus();
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
+        nextQuestion();
+
+        setListeners();
+
+    }
+
+    private void setListeners() {
         ans.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if (i == KeyEvent.KEYCODE_ENTER) {
-                    ans.getText().toString();
-                    if (checkAnswer(a, b, ans.getText().toString())) {
-                        eq.setText("Correct");
-                        eq.setBackgroundColor(Color.GREEN);
-                    } else {
-                        eq.setText("Incorrect");
-                        eq.setBackgroundColor(Color.RED);
+                    if (ans.getText().toString().trim().length() > 0) {
+                        if (checkAnswer(a, b, ans.getText().toString())) {
+                            eq.setBackgroundColor(Color.GREEN);
+                        } else {
+                            eq.setBackgroundColor(Color.RED);
+                        }
+                        nextButton.setVisibility(View.VISIBLE);
                     }
-                    nextButton.setVisibility(View.VISIBLE);
+                    return true;
                 }
                 return false;
             }
         });
 
-//        ans.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-//                if (i == EditorInfo.IME_ACTION_DONE) {
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            }
-//        });
-
-//        view.findViewById(R.id.axb).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavHostFragment.findNavController(SecondFragment.this)
-//                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-//            }
-//        });
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextQuestion();
+            }
+        });
     }
 
+    // Return an integer between 0 and 9
     private int generateNumber() {
         Random random = new Random();
         return random.nextInt(9);
     }
 
+    // Check if a * b is equal to ans
     private boolean checkAnswer(int a, int b, String ans) {
-        if (a*b == Integer.parseInt(ans)) {
+        if (state == 1 && a+b == Integer.parseInt(ans)) { // addition
+            return true;
+        } else if (state == 2 && a*b == Integer.parseInt(ans)) { // multiplication
+            return true;
+        } else if (state == 3 && a/b == Integer.parseInt(ans)) { // division
             return true;
         }
         return false;
     }
 
+    // Replace the question with another
     private void nextQuestion() {
+        ans.getText().clear();
+        eq.setBackgroundColor(Color.WHITE);
+        nextButton.setVisibility(View.INVISIBLE);
+
         a = generateNumber();
         b = generateNumber();
 
-        eq.setText(a + " X " + b);
+        String arith = "";
+
+        if (((MainActivity)getActivity()).getState() == 1) { // addition
+            arith = " + ";
+        } else if (((MainActivity)getActivity()).getState() == 2) { // multiplication
+            arith = " X ";
+        } else if (((MainActivity)getActivity()).getState() == 3) { // division
+            arith = " / ";
+        }
+
+        eq.setText(a + arith + b);
     }
 }

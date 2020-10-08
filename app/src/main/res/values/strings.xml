@@ -16,7 +16,9 @@
     <string name="language">Language</string>
 
     <!--Second Fragment-->
+    <string name="aplusb">A + B = C</string>
     <string name="axb">A x B = C</string>
+    <string name="adivb">A / B = C</string>
     <string name="topBottomMult">Multi Digit Multiplication</string>
 
     <!--Second Fragment-->
