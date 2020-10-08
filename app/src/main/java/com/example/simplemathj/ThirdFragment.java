@@ -8,8 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+
+import com.google.android.material.button.MaterialButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
@@ -23,6 +26,7 @@ import java.util.Random;
 
 public class ThirdFragment extends Fragment {
 
+    Button nextButton;
     EditText eq, ans;
     int a, b;
 
@@ -42,6 +46,15 @@ public class ThirdFragment extends Fragment {
 //        int equationPosition = getResources().getDisplayMetrics().heightPixels/3;
         eq = view.findViewById(R.id.editTextQuestion);
         ans = view.findViewById(R.id.editTextAnswer);
+        nextButton = view.findViewById(R.id.nextQ);
+        nextButton.setVisibility(View.INVISIBLE);
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextQuestion();
+            }
+        });
 
         nextQuestion();
 
@@ -59,7 +72,7 @@ public class ThirdFragment extends Fragment {
                     } else {
                         eq.setText("Incorrect");
                     }
-                    nextQuestion();
+                    nextButton.setVisibility(View.VISIBLE);
 //                    ans.requestFocus();
 //                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 //                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);

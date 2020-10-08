@@ -19,4 +19,7 @@
     <string name="axb">A x B = C</string>
     <string name="topBottomMult">Multi Digit Multiplication</string>
 
+    <!--Second Fragment-->
+    <string name="nextQ">Next Question</string>
+
 </resources>
