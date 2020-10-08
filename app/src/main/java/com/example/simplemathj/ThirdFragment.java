@@ -32,13 +32,13 @@ public class ThirdFragment extends Fragment {
     Button nextButton;
     EditText eq, ans;
     int a, b, state;
+    String arith;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        state = ((MainActivity)getActivity()).getState();
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_third, container, false);
     }
@@ -46,12 +46,12 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        RelativeLayout layout = view.findViewById(R.id.thirdFragLayout);
-//        int equationPosition = getResources().getDisplayMetrics().heightPixels/3;
         eq = view.findViewById(R.id.editTextQuestion);
         ans = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextQ);
         nextButton.setVisibility(View.INVISIBLE);
+
+        state = ((MainActivity)getActivity()).getState();
 
         // This triggers the keyboard to appear
         ans.requestFocus();
@@ -59,7 +59,7 @@ public class ThirdFragment extends Fragment {
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
         nextQuestion();
-
+        setArith();
         setListeners();
 
     }
@@ -91,6 +91,17 @@ public class ThirdFragment extends Fragment {
         });
     }
 
+    // set the arithmetic sign
+    public void setArith() {
+        if (state == 1) { // addition
+            arith = " + ";
+        } else if (state == 2) { // multiplication
+            arith = " X ";
+        } else if (state == 3) { // division
+            arith = " / ";
+        }
+    }
+
     // Return an integer between 0 and 9
     private int generateNumber() {
         Random random = new Random();
@@ -99,11 +110,12 @@ public class ThirdFragment extends Fragment {
 
     // Check if a * b is equal to ans
     private boolean checkAnswer(int a, int b, String ans) {
-        if (state == 1 && a+b == Integer.parseInt(ans)) { // addition
+        int answer = Integer.parseInt(ans);
+        if (state == 1 && a+b == answer) { // addition
             return true;
-        } else if (state == 2 && a*b == Integer.parseInt(ans)) { // multiplication
+        } else if (state == 2 && a*b == answer) { // multiplication
             return true;
-        } else if (state == 3 && a/b == Integer.parseInt(ans)) { // division
+        } else if (state == 3 && a/b == answer) { // division
             return true;
         }
         return false;
@@ -117,16 +129,6 @@ public class ThirdFragment extends Fragment {
 
         a = generateNumber();
         b = generateNumber();
-
-        String arith = "";
-
-        if (((MainActivity)getActivity()).getState() == 1) { // addition
-            arith = " + ";
-        } else if (((MainActivity)getActivity()).getState() == 2) { // multiplication
-            arith = " X ";
-        } else if (((MainActivity)getActivity()).getState() == 3) { // division
-            arith = " / ";
-        }
 
         eq.setText(a + arith + b);
     }
