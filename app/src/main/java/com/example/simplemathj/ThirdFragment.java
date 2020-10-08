@@ -1,16 +1,19 @@
 package com.example.simplemathj;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -52,7 +55,12 @@ public class ThirdFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                eq.setBackgroundColor(Color.WHITE);
                 nextQuestion();
+                nextButton.setVisibility(View.INVISIBLE);
+                ans.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
             }
         });
 
@@ -69,17 +77,27 @@ public class ThirdFragment extends Fragment {
                     ans.getText().toString();
                     if (checkAnswer(a, b, ans.getText().toString())) {
                         eq.setText("Correct");
+                        eq.setBackgroundColor(Color.GREEN);
                     } else {
                         eq.setText("Incorrect");
+                        eq.setBackgroundColor(Color.RED);
                     }
                     nextButton.setVisibility(View.VISIBLE);
-//                    ans.requestFocus();
-//                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
                 }
                 return false;
             }
         });
+
+//        ans.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+//                if (i == EditorInfo.IME_ACTION_DONE) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//        });
 
 //        view.findViewById(R.id.axb).setOnClickListener(new View.OnClickListener() {
 //            @Override

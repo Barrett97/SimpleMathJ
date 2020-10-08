@@ -38,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nextQ"
+            android:textSize="30sp"
             android:id="@+id/nextQ"
             android:layout_below="@+id/editTextAnswer"/>
 
