@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
+import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -13,19 +14,15 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
+import org.w3c.dom.Text;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import java.lang.reflect.Array;
-import java.security.Key;
-import java.util.List;
 import java.util.Random;
 
 public class ThirdFragment extends Fragment {
@@ -33,6 +30,7 @@ public class ThirdFragment extends Fragment {
     Boolean answered;
     Button nextButton;
     EditText eq, ans;
+    TextView checkcross;
     int a, b, state;
     String arith;
 
@@ -52,6 +50,7 @@ public class ThirdFragment extends Fragment {
         ans = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextQ);
         nextButton.setVisibility(View.INVISIBLE);
+        checkcross = view.findViewById(R.id.checkcross);
 
         state = ((MainActivity)getActivity()).getState();
 
@@ -75,10 +74,13 @@ public class ThirdFragment extends Fragment {
                 if (answered == false) {
                     if (i == KeyEvent.KEYCODE_ENTER) {
                         if (ans.getText().toString().trim().length() > 0) {
+                            checkcross.setVisibility(View.VISIBLE);
                             if (checkAnswer(a, b, ans.getText().toString())) {
-                                eq.setBackgroundColor(Color.GREEN);
+                                checkcross.setText(R.string.check);
+                                checkcross.setTextColor(Color.GREEN);
                             } else {
-                                eq.setBackgroundColor(Color.RED);
+                                checkcross.setText(R.string.cross);
+                                checkcross.setTextColor(Color.RED);
                             }
                             nextButton.setVisibility(View.VISIBLE);
                         }
@@ -135,8 +137,9 @@ public class ThirdFragment extends Fragment {
 
     // Replace the question with another
     private void nextQuestion() {
+
+        checkcross.setVisibility(View.INVISIBLE);
         ans.getText().clear();
-        eq.setBackgroundColor(Color.WHITE);
         nextButton.setVisibility(View.INVISIBLE);
 
         a = generateNumber();

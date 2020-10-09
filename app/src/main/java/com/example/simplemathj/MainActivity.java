@@ -16,6 +16,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import androidx.navigation.fragment.NavHostFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawer = findViewById(R.id.drawer);
 
-        NavigationView nv = findViewById(R.id.navigation);
+//        NavigationView nv = findViewById(R.id.navigation);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }
 

@@ -9,12 +9,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/design_default_color_primary_dark">
+        android:layout_height="match_parent" >
 
         <Button
             android:id="@+id/mathButton"
-            style="@style/Widget.MaterialComponents.Button"
             android:backgroundTint="@android:color/holo_orange_light"
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -23,7 +21,7 @@
 
         <Button
             android:id="@+id/langButton"
-            style="@style/Widget.MaterialComponents.Button"
+            android:backgroundTint="@android:color/holo_orange_light"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="@string/language"

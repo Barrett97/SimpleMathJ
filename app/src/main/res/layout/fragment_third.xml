@@ -10,8 +10,7 @@
     <RelativeLayout
         android:id="@+id/thirdFragLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/design_default_color_primary_dark">
+        android:layout_height="match_parent">
 
         <EditText
             android:id="@+id/editTextQuestion"
@@ -22,27 +21,36 @@
             android:inputType="none"
             android:focusable="false"
             android:hint=""
-            android:layout_marginBottom="5dp"
-            android:background="@android:color/transparent" />
+            android:layout_marginBottom="5dp" />
 
         <EditText
             android:id="@+id/editTextAnswer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextQuestion"
+            android:layout_below="@id/editTextQuestion"
             android:textSize="50sp"
             android:gravity="center"
             android:hint=""
             android:inputType="number"
-            android:background="@android:color/holo_blue_dark"/>
+            android:background="@android:color/holo_orange_light"/>
+
+        <TextView
+            android:id="@+id/checkcross"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:gravity="right"
+            android:layout_below="@id/editTextQuestion"
+            android:layout_marginRight="@dimen/fab_margin"/>
 
         <Button
-            style="@style/Widget.MaterialComponents.Button"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nextQ"
             android:textSize="30sp"
             android:id="@+id/nextQ"
+            android:background="@color/holo_orange_light"
             android:layout_below="@+id/editTextAnswer"/>
 
     </RelativeLayout>

@@ -15,14 +15,13 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:background="@color/holo_orange_light">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/design_default_color_primary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
+                android:background="@android:color/holo_orange_light"
                 />
 
         </com.google.android.material.appbar.AppBarLayout>
