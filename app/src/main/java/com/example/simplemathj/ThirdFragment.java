@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ import java.util.Random;
 
 public class ThirdFragment extends Fragment {
 
+    Boolean answered;
     Button nextButton;
     EditText eq, ans;
     int a, b, state;
@@ -53,13 +55,15 @@ public class ThirdFragment extends Fragment {
 
         state = ((MainActivity)getActivity()).getState();
 
+        answered = false;
+
         // This triggers the keyboard to appear
         ans.requestFocus();
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
-        nextQuestion();
         setArith();
+        nextQuestion();
         setListeners();
 
     }
@@ -68,15 +72,22 @@ public class ThirdFragment extends Fragment {
         ans.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (i == KeyEvent.KEYCODE_ENTER) {
-                    if (ans.getText().toString().trim().length() > 0) {
-                        if (checkAnswer(a, b, ans.getText().toString())) {
-                            eq.setBackgroundColor(Color.GREEN);
-                        } else {
-                            eq.setBackgroundColor(Color.RED);
+                if (answered == false) {
+                    if (i == KeyEvent.KEYCODE_ENTER) {
+                        if (ans.getText().toString().trim().length() > 0) {
+                            if (checkAnswer(a, b, ans.getText().toString())) {
+                                eq.setBackgroundColor(Color.GREEN);
+                            } else {
+                                eq.setBackgroundColor(Color.RED);
+                            }
+                            nextButton.setVisibility(View.VISIBLE);
                         }
-                        nextButton.setVisibility(View.VISIBLE);
+                        return true;
                     }
+                    return false;
+                } else if (answered){
+                    nextQuestion();
+                    answered = false;
                     return true;
                 }
                 return false;
@@ -100,6 +111,7 @@ public class ThirdFragment extends Fragment {
         } else if (state == 3) { // division
             arith = " / ";
         }
+        Log.d("arith", arith);
     }
 
     // Return an integer between 0 and 9
