@@ -46,6 +46,7 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         eq = view.findViewById(R.id.editTextQuestion);
         ans = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextQ);
@@ -56,52 +57,47 @@ public class ThirdFragment extends Fragment {
 
         answered = false;
 
-        // This triggers the keyboard to appear
-        ans.requestFocus();
-        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-
+        triggerKeyboard();
         setArith();
         nextQuestion();
         setListeners();
 
     }
 
+    /*
+    Set the listeners for this class
+     */
     private void setListeners() {
-        ans.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (answered == false) {
-                    if (i == KeyEvent.KEYCODE_ENTER) {
-                        if (ans.getText().toString().trim().length() > 0) {
-                            checkcross.setVisibility(View.VISIBLE);
-                            if (checkAnswer(a, b, ans.getText().toString())) {
-                                checkcross.setText(R.string.check);
-                                checkcross.setTextColor(Color.GREEN);
-                            } else {
-                                checkcross.setText(R.string.cross);
-                                checkcross.setTextColor(Color.RED);
-                            }
-                            nextButton.setVisibility(View.VISIBLE);
+        /*
+        While the question isn't answered
+         */
+        ans.setOnKeyListener((view, i, keyEvent) -> {
+            if (answered == false) {
+                if (i == KeyEvent.KEYCODE_ENTER) {
+                    if (ans.getText().toString().trim().length() > 0) {
+                        checkcross.setVisibility(View.VISIBLE);
+                        if (checkAnswer(a, b, ans.getText().toString())) {
+                            checkcross.setText(R.string.check);
+                            checkcross.setTextColor(Color.GREEN);
+                        } else {
+                            checkcross.setText(R.string.cross);
+                            checkcross.setTextColor(Color.RED);
                         }
-                        return true;
+                        nextButton.setVisibility(View.VISIBLE);
                     }
-                    return false;
-                } else if (answered){
-                    nextQuestion();
-                    answered = false;
                     return true;
                 }
                 return false;
+            } else if (answered){
+                nextQuestion();
+                answered = false;
+                return true;
             }
+            return false;
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextQuestion();
-            }
-        });
+        // Load next question
+        nextButton.setOnClickListener(view -> nextQuestion());
     }
 
     // set the arithmetic sign
@@ -146,5 +142,11 @@ public class ThirdFragment extends Fragment {
         b = generateNumber();
 
         eq.setText(a + arith + b);
+    }
+
+    private void triggerKeyboard() {
+        ans.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 }
