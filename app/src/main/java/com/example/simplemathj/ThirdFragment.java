@@ -46,24 +46,25 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        eq = view.findViewById(R.id.editTextQuestion);
-        ans = view.findViewById(R.id.editTextAnswer);
-        nextButton = view.findViewById(R.id.nextQ);
-        nextButton.setVisibility(View.INVISIBLE);
-        checkcross = view.findViewById(R.id.checkcross);
-
-        state = ((MainActivity)getActivity()).getState();
-
-        answered = false;
-
+        init(view);
         triggerKeyboard();
         setArith();
         nextQuestion();
         setListeners();
 
     }
-
+    /*
+    Initializes the views and sets variables
+     */
+    private void init(View view) {
+        eq = view.findViewById(R.id.editTextQuestion);
+        ans = view.findViewById(R.id.editTextAnswer);
+        nextButton = view.findViewById(R.id.nextQ);
+        nextButton.setVisibility(View.INVISIBLE);
+        checkcross = view.findViewById(R.id.checkcross);
+        state = ((MainActivity)getActivity()).getState();
+        answered = false;
+    }
     /*
     Set the listeners for this class
      */
@@ -100,7 +101,9 @@ public class ThirdFragment extends Fragment {
         nextButton.setOnClickListener(view -> nextQuestion());
     }
 
-    // set the arithmetic sign
+    /*
+    Set the arithmetic symbol for display
+     */
     public void setArith() {
         if (state == 1) { // addition
             arith = " + ";
@@ -112,13 +115,17 @@ public class ThirdFragment extends Fragment {
         Log.d("arith", arith);
     }
 
-    // Return an integer between 0 and 9
+    /*
+    Return a random integer
+     */
     private int generateNumber() {
         Random random = new Random();
         return random.nextInt(9);
     }
 
-    // Check if a * b is equal to ans
+    /*
+    Check if a * b is equal to ans
+     */
     private boolean checkAnswer(int a, int b, String ans) {
         int answer = Integer.parseInt(ans);
         if (state == 1 && a+b == answer) { // addition
@@ -131,7 +138,9 @@ public class ThirdFragment extends Fragment {
         return false;
     }
 
-    // Replace the question with another
+    /*
+    Replace the question with another
+     */
     private void nextQuestion() {
 
         checkcross.setVisibility(View.INVISIBLE);
@@ -144,6 +153,9 @@ public class ThirdFragment extends Fragment {
         eq.setText(a + arith + b);
     }
 
+    /*
+    Pull up the keyboard
+     */
     private void triggerKeyboard() {
         ans.requestFocus();
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

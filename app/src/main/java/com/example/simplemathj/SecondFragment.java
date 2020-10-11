@@ -23,34 +23,25 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.aplusb).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_ThirdFragment);
+        view.findViewById(R.id.aplusb).setOnClickListener(view1 -> {
+            NavHostFragment.findNavController(SecondFragment.this)
+                    .navigate(R.id.action_SecondFragment_to_ThirdFragment);
 
-                ((MainActivity)getActivity()).setState(1);
-            }
+            ((MainActivity)getActivity()).setState(1);
         });
 
-        view.findViewById(R.id.axb).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_ThirdFragment);
+        view.findViewById(R.id.axb).setOnClickListener(view2 -> {
+            NavHostFragment.findNavController(SecondFragment.this)
+                    .navigate(R.id.action_SecondFragment_to_ThirdFragment);
 
-                ((MainActivity)getActivity()).setState(2);
-            }
+            ((MainActivity)getActivity()).setState(2);
         });
 
-        view.findViewById(R.id.adivb).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_ThirdFragment);
+        view.findViewById(R.id.adivb).setOnClickListener(view3 -> {
+            NavHostFragment.findNavController(SecondFragment.this)
+                    .navigate(R.id.action_SecondFragment_to_ThirdFragment);
 
-                ((MainActivity)getActivity()).setState(3);
-            }
+            ((MainActivity)getActivity()).setState(3);
         });
     }
 }

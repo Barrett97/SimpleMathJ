@@ -34,22 +34,15 @@ public class MainActivity extends AppCompatActivity {
 
         drawer = findViewById(R.id.drawer);
 
-//        NavigationView nv = findViewById(R.id.navigation);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(false);
-
         }
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawer.openDrawer(Gravity.LEFT);
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(Gravity.LEFT));
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
