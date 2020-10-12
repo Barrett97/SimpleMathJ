@@ -3,36 +3,30 @@ package com.example.simplemathj;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
-import android.text.Html;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
+
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class ThirdFragment extends Fragment {
 
-    Boolean answered;
-    Button nextButton;
-    EditText eq, ans;
-    TextView checkcross;
-    int a, b, state;
-    String arith;
+    private static Boolean answered;
+    private static int a, b, state;
+    private static String arith;
+    private Button nextButton;
+    private EditText ans;
+    private TextView eq, checkcross;
 
     @Override
     public View onCreateView(
@@ -57,12 +51,12 @@ public class ThirdFragment extends Fragment {
     Initializes the views and sets variables
      */
     private void init(View view) {
-        eq = view.findViewById(R.id.editTextQuestion);
+        eq = view.findViewById(R.id.textViewQuestion);
         ans = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextQ);
         nextButton.setVisibility(View.INVISIBLE);
         checkcross = view.findViewById(R.id.checkcross);
-        state = ((MainActivity)getActivity()).getState();
+        state = ((MainActivity) Objects.requireNonNull(getActivity())).getState();
         answered = false;
     }
     /*
@@ -73,30 +67,22 @@ public class ThirdFragment extends Fragment {
         While the question isn't answered
          */
         ans.setOnKeyListener((view, i, keyEvent) -> {
-            if (answered == false) {
-                if (i == KeyEvent.KEYCODE_ENTER) {
-                    if (ans.getText().toString().trim().length() > 0) {
-                        checkcross.setVisibility(View.VISIBLE);
-                        if (checkAnswer(a, b, ans.getText().toString())) {
-                            checkcross.setText(R.string.check);
-                            checkcross.setTextColor(Color.GREEN);
-                        } else {
-                            checkcross.setText(R.string.cross);
-                            checkcross.setTextColor(Color.RED);
-                        }
-                        nextButton.setVisibility(View.VISIBLE);
+            if (i == KeyEvent.KEYCODE_ENTER) {
+                if (ans.getText().toString().trim().length() > 0) {
+                    checkcross.setVisibility(View.VISIBLE);
+                    if (checkAnswer(a, b, ans.getText().toString())) {
+                        checkcross.setText(R.string.check);
+                        checkcross.setTextColor(Color.GREEN);
+                    } else {
+                        checkcross.setText(R.string.cross);
+                        checkcross.setTextColor(Color.RED);
                     }
-                    return true;
+                    nextButton.setVisibility(View.VISIBLE);
                 }
-                return false;
-            } else if (answered){
-                nextQuestion();
-                answered = false;
                 return true;
             }
             return false;
         });
-
         // Load next question
         nextButton.setOnClickListener(view -> nextQuestion());
     }
@@ -112,7 +98,6 @@ public class ThirdFragment extends Fragment {
         } else if (state == 3) { // division
             arith = " / ";
         }
-        Log.d("arith", arith);
     }
 
     /*
@@ -142,15 +127,15 @@ public class ThirdFragment extends Fragment {
     Replace the question with another
      */
     private void nextQuestion() {
-
-        checkcross.setVisibility(View.INVISIBLE);
         ans.getText().clear();
+        checkcross.setVisibility(View.INVISIBLE);
         nextButton.setVisibility(View.INVISIBLE);
 
         a = generateNumber();
         b = generateNumber();
+        String question = a + arith + b;
 
-        eq.setText(a + arith + b);
+        eq.setText(question);
     }
 
     /*
@@ -158,7 +143,7 @@ public class ThirdFragment extends Fragment {
      */
     private void triggerKeyboard() {
         ans.requestFocus();
-        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 }

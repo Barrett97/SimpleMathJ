@@ -2,26 +2,21 @@ package com.example.simplemathj;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Gravity;
-import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import androidx.navigation.fragment.NavHostFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
-    private ActionBarDrawerToggle toggle;
     public int state = 0;
 
     @Override
@@ -34,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawer = findViewById(R.id.drawer);
 
-        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -44,14 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(Gravity.LEFT));
 
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
     }
 
     @Override
@@ -61,11 +48,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-//    @Override
-//    protected void onPostCreate(Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        toggle.syncState();
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -76,15 +58,19 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.add(R.id.settings_fragment, new SettingsFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void setState(int a) {
-        state = a;
+    public void setState(int state) {
+        this.state = state;
     }
 
     public int getState() {
