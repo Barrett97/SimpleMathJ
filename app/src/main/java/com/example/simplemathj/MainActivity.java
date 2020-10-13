@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 
 import android.view.Menu;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
     public int state = 0;
+    public int height;
+    public int width;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(Gravity.LEFT));
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        height = displayMetrics.heightPixels;
+        width = displayMetrics.widthPixels;
 
     }
 
@@ -75,5 +83,13 @@ public class MainActivity extends AppCompatActivity {
 
     public int getState() {
         return state;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 }

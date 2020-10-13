@@ -101,11 +101,11 @@ public class ThirdFragment extends Fragment {
     }
 
     /*
-    Return a random integer
+    Return a random integer greater than x and less than y
      */
-    private int generateNumber() {
+    private int generateNumber(int max, int min) {
         Random random = new Random();
-        return random.nextInt(9);
+        return random.nextInt(max - min + 1) + min;
     }
 
     /*
@@ -131,8 +131,8 @@ public class ThirdFragment extends Fragment {
         checkcross.setVisibility(View.INVISIBLE);
         nextButton.setVisibility(View.INVISIBLE);
 
-        a = generateNumber();
-        b = generateNumber();
+        a = generateNumber(20, 2);
+        b = generateNumber(20, 2);
         String question = a + arith + b;
 
         eq.setText(question);

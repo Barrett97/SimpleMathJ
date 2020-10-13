@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class SecondFragment extends Fragment {
+
+    EditText aBound, bBound;
+
 
     @Override
     public View onCreateView(
@@ -43,5 +47,10 @@ public class SecondFragment extends Fragment {
 
             ((MainActivity)getActivity()).setState(3);
         });
+
+        aBound = view.findViewById(R.id.aBound);
+        bBound = view.findViewById(R.id.bBound);
+        aBound.setWidth(((MainActivity)getActivity()).getWidth()/2);
+        bBound.setWidth(((MainActivity)getActivity()).getWidth()/2);
     }
 }
