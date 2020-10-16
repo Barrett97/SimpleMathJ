@@ -37,12 +37,25 @@
         <action
             android:id="@+id/action_SecondFragment_to_ThirdFragment"
             app:destination="@id/ThirdFragment" />
+
+        <action
+            android:id="@+id/action_SecondFragment_to_AddBoardFragment"
+            app:destination="@id/AddBoardFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/ThirdFragment"
         android:name="com.example.simplemathj.ThirdFragment"
         android:label="@string/third_fragment_label"
         tools:layout="@layout/fragment_third">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddBoardFragment"
+        android:name="com.example.simplemathj.AdditionBoardFragment"
+        android:label="@string/third_fragment_label"
+        tools:layout="@layout/fragment_addition_board">
 
     </fragment>
 </navigation>

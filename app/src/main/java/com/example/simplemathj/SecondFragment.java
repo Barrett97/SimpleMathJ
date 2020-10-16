@@ -12,9 +12,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 public class SecondFragment extends Fragment {
 
-    EditText aBound, bBound;
-
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -48,9 +45,10 @@ public class SecondFragment extends Fragment {
             ((MainActivity)getActivity()).setState(3);
         });
 
-        aBound = view.findViewById(R.id.aBound);
-        bBound = view.findViewById(R.id.bBound);
-        aBound.setWidth(((MainActivity)getActivity()).getWidth()/2);
-        bBound.setWidth(((MainActivity)getActivity()).getWidth()/2);
+        view.findViewById(R.id.addBoard).setOnClickListener(view4 -> {
+            NavHostFragment.findNavController(SecondFragment.this)
+                    .navigate(R.id.action_SecondFragment_to_AddBoardFragment);
+        });
+
     }
 }

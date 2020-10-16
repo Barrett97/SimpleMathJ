@@ -25,7 +25,8 @@
     <string name="aplusb">A + B = C</string>
     <string name="axb">A x B = C</string>
     <string name="adivb">A / B = C</string>
-    <string name="topBottomMult">Multi Digit Multiplication</string>
+    <string name="multBoard">Multi Digit Multiplication</string>
+    <string name="addBoard">Multi Digit Addition</string>
 
     <!--Second Fragment-->
     <string name="nextQ">Next Question</string>
