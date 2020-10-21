@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-public class FirstFragment extends Fragment {
+public class TopicFragment extends Fragment {
 
     @Override
     public View onCreateView(
@@ -23,10 +23,10 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.mathButton).setOnClickListener(view1 -> NavHostFragment.findNavController(FirstFragment.this)
+        view.findViewById(R.id.mathButton).setOnClickListener(view1 -> NavHostFragment.findNavController(TopicFragment.this)
                 .navigate(R.id.action_FirstFragment_to_SecondFragment));
 
-        view.findViewById(R.id.langButton).setOnClickListener(view12 -> NavHostFragment.findNavController(FirstFragment.this)
+        view.findViewById(R.id.langButton).setOnClickListener(view12 -> NavHostFragment.findNavController(TopicFragment.this)
                 .navigate(R.id.action_FirstFragment_to_SecondFragment));
 
     }

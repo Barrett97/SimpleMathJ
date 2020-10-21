@@ -50,7 +50,8 @@
             android:textSize="30sp"
             android:id="@+id/nextQ"
             android:background="@color/holo_orange_light"
-            android:layout_below="@+id/editTextAnswer"/>
+            android:layout_below="@+id/editTextAnswer"
+            style="@style/AppTheme.RoundedCornerMaterialButton" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

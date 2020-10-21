@@ -53,7 +53,7 @@ public class Board extends Fragment {
     private void makeBoard() {
         for (int k = 0; k < gridRows; k++) {
             for (int j = 0; j < gridColumns; j++) {
-                EditText e = new EditText();
+//                EditText e = new EditText();
                 cell[k] = new Cell(k, j);
             }
         }

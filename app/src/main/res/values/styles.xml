@@ -16,4 +16,17 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.RoundedCornerMaterialButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/rounded_shape</item>
+    </style>
+
+    <style name="Buttons" parent="Widget.AppCompat.Button.Colored">
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearance</item>
+
+    </style>
+    <style name="MyShapeAppearance">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSizeTopLeft">80dp</item>
+        <item name="cornerSizeBottomLeft">32dp</item>
+    </style>
 </resources>
