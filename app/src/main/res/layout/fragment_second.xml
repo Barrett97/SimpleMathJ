@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="@string/aplusb"
-            style="@style/AppTheme.RoundedCornerMaterialButton"/>
+            style="@style/MainButtons"/>
 
         <Button
             android:id="@+id/axb"
@@ -25,7 +25,7 @@
             android:layout_height="80dp"
             android:text="@string/axb"
             android:layout_below="@id/aplusb"
-            style="@style/AppTheme.RoundedCornerMaterialButton"/>
+            style="@style/MainButtons"/>
 
         <Button
             android:id="@+id/adivb"
@@ -34,7 +34,7 @@
             android:layout_height="80dp"
             android:text="@string/adivb"
             android:layout_below="@id/axb"
-            style="@style/AppTheme.RoundedCornerMaterialButton" />
+            style="@style/MainButtons" />
 
         <Button
             android:id="@+id/addBoard"
@@ -43,7 +43,7 @@
             android:layout_height="80dp"
             android:text="@string/addBoard"
             android:layout_below="@id/adivb"
-            style="@style/AppTheme.RoundedCornerMaterialButton"/>
+            style="@style/MainButtons"/>
 
         <Button
             android:id="@+id/multBoard"
@@ -52,7 +52,7 @@
             android:layout_height="80dp"
             android:text="@string/multBoard"
             android:layout_below="@id/addBoard"
-            style="@style/AppTheme.RoundedCornerMaterialButton"/>
+            style="@style/MainButtons"/>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

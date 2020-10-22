@@ -18,7 +18,8 @@
             android:layout_height="80dp"
             android:text="@string/math"
             android:textSize="15sp"
-            style="@style/Buttons" />
+            style="@style/MainButtons"
+            />
 
         <Button
             android:id="@+id/langButton"
@@ -27,7 +28,7 @@
             android:text="@string/language"
             android:textSize="15sp"
             android:layout_below="@id/mathButton"
-            style="@style/AppTheme.RoundedCornerMaterialButton" />
+            style="@style/MainButtons" />
 
     </RelativeLayout>
 

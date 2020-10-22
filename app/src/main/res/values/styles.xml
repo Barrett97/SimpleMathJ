@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,21 +12,18 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="Theme.MaterialComponents.Light.DarkActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AppTheme.RoundedCornerMaterialButton" parent="Widget.AppCompat.Button.Colored">
-        <item name="android:background">@drawable/rounded_shape</item>
-    </style>
-
-    <style name="Buttons" parent="Widget.AppCompat.Button.Colored">
+    <style name="MainButtons" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="shapeAppearanceOverlay">@style/MyShapeAppearance</item>
-
     </style>
+
     <style name="MyShapeAppearance">
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSizeTopLeft">80dp</item>
-        <item name="cornerSizeBottomLeft">32dp</item>
+        <item name="cornerFamily">rounded</item>
+
+        <item name="cornerSizeTopRight">50dp</item>
+        <item name="cornerSizeBottomLeft">50dp</item>
     </style>
 </resources>
