@@ -1,6 +1,7 @@
 package com.example.simplemathj;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class Board extends Fragment {
+public class BoardFragment extends Fragment {
 
     int a, b, i, j;
     Cell[] c;
@@ -23,11 +24,6 @@ public class Board extends Fragment {
     GridLayout gridLayout;
     Cell[] cell;
 
-
-    public Board(int a, int b) {
-        this.a = a;
-        this.b = b;
-    }
 
     @Nullable
     @Override
@@ -39,24 +35,28 @@ public class Board extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        gridLayout = view.findViewById(R.id.addBoardLayout);
-
-        a = generateNumber(200, 2);
-        b = generateNumber(200, 2);
-        gridRows = (int)(Math.log10(b)+1);
-        gridColumns = (int)(Math.log10(a)+1);
+        gridLayout = view.findViewById(R.id.LayoutBoard);
+        a = generateNumber(200, 10);
+        b = generateNumber(200, 10);
+        gridRows = (int)(Math.log10(a));
+        gridColumns = (int)(Math.log10(b));
         // init
-
-        makeBoard();
+        Log.d("gridrows", a + " " + gridRows);
+        Log.d("gridcolumns", b + " " + gridColumns);
     }
 
     private void makeBoard() {
+        EditText cell;
         for (int k = 0; k < gridRows; k++) {
             for (int j = 0; j < gridColumns; j++) {
-//                EditText e = new EditText();
-                cell[k] = new Cell(k, j);
+                cell = new EditText(getContext());
+                cell.setLayoutParams(new GridLayout.LayoutParams());
+                gridLayout.addView(cell);
             }
         }
+//        EditText et = new EditText(getContext());
+//        et.setLayoutParams(new GridLayout.LayoutParams());
+//        gridLayout.addView(et);
     }
 
     private int generateNumber(int max, int min) {
