@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-public class SecondFragment extends Fragment {
+public class MathFragment extends Fragment {
 
     @Override
     public View onCreateView(
@@ -24,28 +24,28 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         view.findViewById(R.id.aplusb).setOnClickListener(view1 -> {
-            NavHostFragment.findNavController(SecondFragment.this)
+            NavHostFragment.findNavController(MathFragment.this)
                     .navigate(R.id.action_SecondFragment_to_ThirdFragment);
 
             ((MainActivity)getActivity()).setState(1);
         });
 
         view.findViewById(R.id.axb).setOnClickListener(view2 -> {
-            NavHostFragment.findNavController(SecondFragment.this)
+            NavHostFragment.findNavController(MathFragment.this)
                     .navigate(R.id.action_SecondFragment_to_ThirdFragment);
 
             ((MainActivity)getActivity()).setState(2);
         });
 
         view.findViewById(R.id.adivb).setOnClickListener(view3 -> {
-            NavHostFragment.findNavController(SecondFragment.this)
+            NavHostFragment.findNavController(MathFragment.this)
                     .navigate(R.id.action_SecondFragment_to_ThirdFragment);
 
             ((MainActivity)getActivity()).setState(3);
         });
 
         view.findViewById(R.id.addBoard).setOnClickListener(view4 -> {
-            NavHostFragment.findNavController(SecondFragment.this)
+            NavHostFragment.findNavController(MathFragment.this)
                     .navigate(R.id.action_SecondFragment_to_AddBoardFragment);
         });
 

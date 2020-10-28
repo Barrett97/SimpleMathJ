@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.simplemathj.SecondFragment"
+        android:name="com.example.simplemathj.MathFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_math">
 

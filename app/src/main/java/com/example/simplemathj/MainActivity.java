@@ -85,11 +85,4 @@ public class MainActivity extends AppCompatActivity {
         return state;
     }
 
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
 }
