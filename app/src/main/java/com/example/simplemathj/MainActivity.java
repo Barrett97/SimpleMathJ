@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
     public int state = 0;
-    public int height;
-    public int width;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +39,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(Gravity.LEFT));
-
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        height = displayMetrics.heightPixels;
-        width = displayMetrics.widthPixels;
 
     }
 
