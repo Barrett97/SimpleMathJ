@@ -49,7 +49,11 @@ public class TopicFragment extends Fragment {
 
         setViews(view);
         setListeners(view);
+        setQuote(quote);
 
+    }
+
+    private void setQuote(TextView quote) {
         apiQuoteInterface = APIClient.getClient().create(APIQuoteInterface.class);
         Call<List<Quote>> call = apiQuoteInterface.getData();
 
@@ -60,16 +64,15 @@ public class TopicFragment extends Fragment {
                 quoteList = response.body();
 
                 quote.setText(quoteList.get(0).getText());
-                author.setText("\"" + quoteList.get(0).getAuthor() + "\"");
+                String authorText = "- " + quoteList.get(0).getAuthor();
+                author.setText(authorText);
             }
 
             @Override
             public void onFailure(Call<List<Quote>> call, Throwable t) {
-                Log.e(TAG, "onFailure: Something went wrong:: " + t.getMessage());
-                Toast.makeText(requireActivity(), "Something went wrong", Toast.LENGTH_SHORT);
+                Log.e(TAG, "onFailure: Something went wrong: " + t.getMessage());
             }
         });
-
     }
 
     private void setViews(View view) {
@@ -87,7 +90,11 @@ public class TopicFragment extends Fragment {
         quote.setOnClickListener(v -> {
             int i = generateNumber(quoteList.size()-1, 0);
             quote.setText(quoteList.get(i).getText());
-            author.setText("\"" + quoteList.get(i).getAuthor() + "\"");
+            if (quoteList.get(i).getAuthor().equals("null")) {
+                author.setText("\"" + "unknown" + "\"");
+            } else {
+                author.setText("\"" + quoteList.get(i).getAuthor() + "\"");
+            }
         });
     }
 
