@@ -6,6 +6,6 @@ import org.junit.runner.RunWith
 class MyActivityTest {
     @Test
     fun testEvent() {
-        val scenario = launchActivity<MainActivity>;
+
     }
 }
