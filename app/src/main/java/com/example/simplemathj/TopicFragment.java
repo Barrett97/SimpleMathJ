@@ -102,4 +102,12 @@ public class TopicFragment extends Fragment {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+//        getParentFragmentManager().putFragment(outstate, "TopicFragment", TopicFragment);
+    }
+
+
 }

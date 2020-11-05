@@ -21,12 +21,16 @@
     <string name="math">Math</string>
     <string name="language">Language</string>
 
-    <!--Second Fragment-->
+    <!--Math Fragment-->
     <string name="aplusb">A + B = C</string>
     <string name="axb">A x B = C</string>
     <string name="adivb">A / B = C</string>
     <string name="multBoard">Multi Digit Multiplication</string>
     <string name="addBoard">Multi Digit Addition</string>
+
+    <!--Language Fragment-->
+    <string name="gr1">Grade 1</string>
+    <string name="gr2">Grade 2</string>
 
     <!--Second Fragment-->
     <string name="nextQ">Next Question</string>
