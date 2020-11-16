@@ -49,4 +49,9 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
 
+    def room_version = "2.2.5"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
 }
