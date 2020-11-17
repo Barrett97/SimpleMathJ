@@ -25,10 +25,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Tag;
 
 import static android.content.ContentValues.TAG;
 
 public class TopicFragment extends Fragment {
+
+    private static final String TAG = "QUOTE";
 
     TextView quote;
     TextView author;
@@ -50,7 +53,6 @@ public class TopicFragment extends Fragment {
         setViews(view);
         setListeners(view);
         setQuote(quote);
-
     }
 
     private void setQuote(TextView quote) {
@@ -90,10 +92,16 @@ public class TopicFragment extends Fragment {
         quote.setOnClickListener(v -> {
             int i = generateNumber(quoteList.size()-1, 0);
             quote.setText(quoteList.get(i).getText());
-            if (quoteList.get(i).getAuthor().equals("null")) {
-                author.setText("\"" + "unknown" + "\"");
-            } else {
-                author.setText("\"" + quoteList.get(i).getAuthor() + "\"");
+            try {
+                if (quoteList.get(i).getAuthor().equals("null")) {
+                    String quote = "\"" + "unknown" + "\"";
+                    author.setText(quote);
+                } else {
+                    String quote = "\"" + quoteList.get(i).getAuthor() + "\"";
+                    author.setText(quote);
+                }
+            } catch (NullPointerException e) {
+                Log.d(TAG, "null quote");
             }
         });
     }

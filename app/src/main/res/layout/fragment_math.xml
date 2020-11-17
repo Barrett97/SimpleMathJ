@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MathFragment">
+    tools:context=".MathFragment"
+    android:padding="@dimen/button_padding">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,7 +13,6 @@
 
         <Button
             android:id="@+id/aplusb"
-            android:backgroundTint="@android:color/holo_orange_light"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="@string/aplusb"
@@ -20,7 +20,6 @@
 
         <Button
             android:id="@+id/axb"
-            android:backgroundTint="@android:color/holo_orange_light"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="@string/axb"
@@ -29,7 +28,6 @@
 
         <Button
             android:id="@+id/adivb"
-            android:backgroundTint="@android:color/holo_orange_light"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="@string/adivb"
@@ -38,7 +36,6 @@
 
         <Button
             android:id="@+id/addBoard"
-            android:backgroundTint="@android:color/holo_orange_light"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="@string/addBoard"
@@ -47,7 +44,6 @@
 
         <Button
             android:id="@+id/multBoard"
-            android:backgroundTint="@android:color/holo_orange_light"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="@string/multBoard"

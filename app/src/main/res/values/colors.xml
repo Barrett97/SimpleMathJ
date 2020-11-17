@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#ffffbb33</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimaryDark">#524b2a</color>
+    <color name="colorAccent">#524b2a</color>
     <color name="white">#FFFFFF</color>
 
     <color name="background_dark">#ff000000</color>
@@ -46,5 +46,5 @@
     <!-- A really bright Holo shade of blue -->
     <color name="holo_blue_bright">#ff00ddff</color>
 
-    <color name="forest_green">#800020</color>
+    <color name="forest_green">#97DC91</color>
 </resources>

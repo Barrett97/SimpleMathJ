@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThirdFragment">
+    tools:context=".ThirdFragment"
+    android:padding="@dimen/button_padding">
 
     <RelativeLayout
         android:id="@+id/thirdFragLayout"
@@ -20,7 +20,8 @@
             android:gravity="center"
             android:inputType="none"
             android:focusable="false"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="@dimen/button_padding"
+            android:background="@android:color/holo_orange_light"/>
 
         <EditText
             android:id="@+id/editTextAnswer"
@@ -29,8 +30,9 @@
             android:layout_below="@id/textViewQuestion"
             android:textSize="50sp"
             android:gravity="center"
-            android:hint=""
+            android:hint="?"
             android:inputType="number"
+            android:layout_marginBottom="5dp"
             android:background="@android:color/holo_orange_light"/>
 
         <TextView
@@ -38,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="50sp"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_below="@id/textViewQuestion"
             android:layout_marginRight="@dimen/fab_margin"/>
 
