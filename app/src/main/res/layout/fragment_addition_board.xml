@@ -1,8 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:id="@+id/LayoutBoard">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LayoutBoard"
+        app:columnCount="5" >
 
+        <NumberPicker
+            android:id="@+id/npCell00"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            android:background="@color/white"
+            />
 
-</GridLayout>
+        <NumberPicker
+            android:id="@+id/npCell01"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+        <NumberPicker
+            android:id="@+id/npCell02"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+        <NumberPicker
+            android:id="@+id/npCell03"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+        <NumberPicker
+            android:id="@+id/npCell04"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+        <TextView
+            android:id="@+id/tvCell10"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <TextView
+            android:id="@+id/tvCell11"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <TextView
+            android:id="@+id/tvCell12"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <TextView
+            android:id="@+id/tvCell13"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <TextView
+            android:id="@+id/tvCell14"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <TextView
+            android:id="@+id/tvCell20"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <TextView
+            android:id="@+id/tvCell21"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <TextView
+            android:id="@+id/tvCell22"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <TextView
+            android:id="@+id/tvCell23"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <TextView
+            android:id="@+id/tvCell24"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"/>
+
+        <NumberPicker
+            android:id="@+id/npCell30"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+        <NumberPicker
+            android:id="@+id/npCell31"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+        <NumberPicker
+            android:id="@+id/npCell32"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+        <NumberPicker
+            android:id="@+id/npCell33"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+        <NumberPicker
+            android:id="@+id/npCell34"
+            app:layout_columnWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/checkAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_below="@id/LayoutBoard"
+        android:layout_margin="@dimen/button_padding"/>
+
+</RelativeLayout>

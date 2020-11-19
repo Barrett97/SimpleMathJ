@@ -1,4 +1,4 @@
-package com.example.simplemathj;
+package com.example.simplemathj.math;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,15 +13,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.simplemathj.MainActivity;
+import com.example.simplemathj.R;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import java.util.Objects;
 import java.util.Random;
 
-public class ThirdFragment extends Fragment {
+/*
+* This fragment contains the simple arithmetic questions
+*
+*/
+public class SimpleArithFragment extends Fragment {
 
-    private static Boolean answered;
     private static int a, b, state;
     private static String arith;
     private Button nextButton;
@@ -56,8 +62,7 @@ public class ThirdFragment extends Fragment {
         nextButton = view.findViewById(R.id.nextQ);
         nextButton.setVisibility(View.INVISIBLE);
         checkcross = view.findViewById(R.id.checkcross);
-        state = ((MainActivity) Objects.requireNonNull(getActivity())).getState();
-        answered = false;
+        state = ((MainActivity) requireActivity()).getState();
     }
     /*
     Set the listeners for this class
@@ -124,13 +129,14 @@ public class ThirdFragment extends Fragment {
     }
 
     /*
-    Replace the question with another
+    Replace the question with the next
      */
     private void nextQuestion() {
         ans.getText().clear();
         checkcross.setVisibility(View.INVISIBLE);
         nextButton.setVisibility(View.INVISIBLE);
 
+        // TODO: make settable bounds
         a = generateNumber(20, 2);
         b = generateNumber(20, 2);
         String question = a + arith + b;
@@ -143,7 +149,7 @@ public class ThirdFragment extends Fragment {
      */
     private void triggerKeyboard() {
         ans.requestFocus();
-        InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 }

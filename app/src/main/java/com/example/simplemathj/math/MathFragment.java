@@ -1,9 +1,12 @@
-package com.example.simplemathj;
+package com.example.simplemathj.math;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.simplemathj.MainActivity;
+import com.example.simplemathj.R;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -25,28 +28,28 @@ public class MathFragment extends Fragment {
 
         view.findViewById(R.id.aplusb).setOnClickListener(view1 -> {
             NavHostFragment.findNavController(MathFragment.this)
-                    .navigate(R.id.action_SecondFragment_to_ThirdFragment);
+                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
-            ((MainActivity)getActivity()).setState(1);
+            ((MainActivity) requireActivity()).setState(1);
         });
 
         view.findViewById(R.id.axb).setOnClickListener(view2 -> {
             NavHostFragment.findNavController(MathFragment.this)
-                    .navigate(R.id.action_SecondFragment_to_ThirdFragment);
+                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
-            ((MainActivity)getActivity()).setState(2);
+            ((MainActivity) requireActivity()).setState(2);
         });
 
         view.findViewById(R.id.adivb).setOnClickListener(view3 -> {
             NavHostFragment.findNavController(MathFragment.this)
-                    .navigate(R.id.action_SecondFragment_to_ThirdFragment);
+                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
-            ((MainActivity)getActivity()).setState(3);
+            ((MainActivity) requireActivity()).setState(3);
         });
 
         view.findViewById(R.id.addBoard).setOnClickListener(view4 -> {
             NavHostFragment.findNavController(MathFragment.this)
-                    .navigate(R.id.action_SecondFragment_to_AddBoardFragment);
+                    .navigate(R.id.action_TopicFragment_to_AddBoardFragment);
         });
 
     }

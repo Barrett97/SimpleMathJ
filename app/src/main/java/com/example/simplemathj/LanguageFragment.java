@@ -27,13 +27,13 @@ public class LanguageFragment extends Fragment {
 
         view.findViewById(R.id.aplusb).setOnClickListener(view1 -> {
             NavHostFragment.findNavController(LanguageFragment.this)
-                    .navigate(R.id.action_SecondFragment_to_ThirdFragment);
+                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
         });
 
         view.findViewById(R.id.axb).setOnClickListener(view2 -> {
             NavHostFragment.findNavController(LanguageFragment.this)
-                    .navigate(R.id.action_SecondFragment_to_ThirdFragment);
+                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
         });
 

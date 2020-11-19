@@ -84,10 +84,10 @@ public class TopicFragment extends Fragment {
 
     private void setListeners(View view) {
         view.findViewById(R.id.mathButton).setOnClickListener(view1 -> NavHostFragment.findNavController(TopicFragment.this)
-                .navigate(R.id.action_FirstFragment_to_SecondFragment));
+                .navigate(R.id.action_TopicFragment_to_SecondFragment));
 
         view.findViewById(R.id.langButton).setOnClickListener(view12 -> NavHostFragment.findNavController(TopicFragment.this)
-                .navigate(R.id.action_FirstFragment_to_SecondFragment));
+                .navigate(R.id.action_TopicFragment_to_SecondFragment));
 
         quote.setOnClickListener(v -> {
             int i = generateNumber(quoteList.size()-1, 0);
@@ -97,7 +97,7 @@ public class TopicFragment extends Fragment {
                     String quote = "\"" + "unknown" + "\"";
                     author.setText(quote);
                 } else {
-                    String quote = "\"" + quoteList.get(i).getAuthor() + "\"";
+                    String quote = "- " + quoteList.get(i).getAuthor();
                     author.setText(quote);
                 }
             } catch (NullPointerException e) {
