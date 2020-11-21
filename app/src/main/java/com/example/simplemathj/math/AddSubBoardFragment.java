@@ -1,6 +1,7 @@
 package com.example.simplemathj.math;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,9 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.example.simplemathj.R;
+import com.example.simplemathj.util.RandomNumber;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +19,9 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import static android.view.Gravity.CENTER;
+import static android.view.Gravity.CENTER_HORIZONTAL;
 
 public class AddSubBoardFragment extends Fragment {
 
@@ -67,6 +74,12 @@ public class AddSubBoardFragment extends Fragment {
         cell03 = v.findViewById(R.id.npCell03);
         cell04 = v.findViewById(R.id.npCell04);
 
+        cell30 = v.findViewById(R.id.npCell30);
+        cell31 = v.findViewById(R.id.npCell31);
+        cell32 = v.findViewById(R.id.npCell32);
+        cell33 = v.findViewById(R.id.npCell33);
+        cell34 = v.findViewById(R.id.npCell34);
+
         cell10 = v.findViewById(R.id.tvCell10);
         cell11 = v.findViewById(R.id.tvCell11);
         cell12 = v.findViewById(R.id.tvCell12);
@@ -78,11 +91,23 @@ public class AddSubBoardFragment extends Fragment {
         cell23 = v.findViewById(R.id.tvCell23);
         cell24 = v.findViewById(R.id.tvCell24);
 
-        cell30 = v.findViewById(R.id.npCell30);
-        cell31 = v.findViewById(R.id.npCell31);
-        cell32 = v.findViewById(R.id.npCell32);
-        cell33 = v.findViewById(R.id.npCell33);
-        cell34 = v.findViewById(R.id.npCell34);
+        List<TextView> textViewNumbers = new ArrayList<>();
+
+        textViewNumbers.add(cell11);
+        textViewNumbers.add(cell12);
+        textViewNumbers.add(cell13);
+        textViewNumbers.add(cell14);
+
+        textViewNumbers.add(cell21);
+        textViewNumbers.add(cell22);
+        textViewNumbers.add(cell23);
+        textViewNumbers.add(cell24);
+
+        for (TextView i : textViewNumbers) {
+            i.setGravity(CENTER);
+            i.setTextSize(70);
+            i.setText(String.valueOf(RandomNumber.generateTo(9)));
+        }
     }
 
     private void populateNumberPickers() {

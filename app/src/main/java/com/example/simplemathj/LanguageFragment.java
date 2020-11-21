@@ -25,17 +25,17 @@ public class LanguageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.aplusb).setOnClickListener(view1 -> {
-            NavHostFragment.findNavController(LanguageFragment.this)
-                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
-
-        });
-
-        view.findViewById(R.id.axb).setOnClickListener(view2 -> {
-            NavHostFragment.findNavController(LanguageFragment.this)
-                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
-
-        });
+//        view.findViewById(R.id.aplusb).setOnClickListener(view1 -> {
+//            NavHostFragment.findNavController(LanguageFragment.this)
+//                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
+//
+//        });
+//
+//        view.findViewById(R.id.axb).setOnClickListener(view2 -> {
+//            NavHostFragment.findNavController(LanguageFragment.this)
+//                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
+//
+//        });
 
     }
 }

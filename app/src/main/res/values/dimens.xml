@@ -3,7 +3,7 @@
 
     <dimen name="button_padding">10dp</dimen>
 
-    <dimen name="board_cell">100dp</dimen>
+    <dimen name="board_cell">80dp</dimen>
 
     <dimen name="button_height">80dp</dimen>
 </resources>

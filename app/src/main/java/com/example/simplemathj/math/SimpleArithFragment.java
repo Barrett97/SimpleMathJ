@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.simplemathj.MainActivity;
 import com.example.simplemathj.R;
+import com.example.simplemathj.util.RandomNumber;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -137,8 +138,8 @@ public class SimpleArithFragment extends Fragment {
         nextButton.setVisibility(View.INVISIBLE);
 
         // TODO: make settable bounds
-        a = generateNumber(20, 2);
-        b = generateNumber(20, 2);
+        a = RandomNumber.generateBetween(20, 2);
+        b = RandomNumber.generateBetween(20, 2);
         String question = a + arith + b;
 
         eq.setText(question);
