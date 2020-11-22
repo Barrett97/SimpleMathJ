@@ -5,10 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Quote {
     @SerializedName("text")
-    @Expose
     String text;
     @SerializedName("author")
-    @Expose
     String author;
 
     public String getText() {

@@ -2,6 +2,7 @@ package com.example.simplemathj.quote;
 
 import android.util.Log;
 
+import com.example.simplemathj.util.RandomNumber;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -15,11 +16,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.content.ContentValues.TAG;
 
-public class Controller implements Callback<List<Quote>>{
+public class QuoteController implements Callback<List<Quote>>{
 
     private static final String BASE_URL = "https://type.fit/";
 
-    public void start() {
+    SetQuoteListener setQuoteListener;
+
+    public void start(SetQuoteListener setQuoteListener) {
+
+        this.setQuoteListener = setQuoteListener;
+
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -38,14 +44,13 @@ public class Controller implements Callback<List<Quote>>{
     @Override
     public void onResponse(Call<List<Quote>> call, Response<List<Quote>> response) {
         Log.d(TAG, "onResponse: Server response: " + response.toString());
-        List<Quote> quoteList = response.body();
 
-//        quote.setText(quoteList.get(0).getText());
-//        author.setText("\"" + quoteList.get(0).getAuthor() + "\"");
+        setQuoteListener.setQuoteList(response);
+
     }
 
     @Override
     public void onFailure(Call<List<Quote>> call, Throwable t) {
-
+        Log.d(TAG, "Failure: Something went wrong: " + t.getMessage());
     }
 }

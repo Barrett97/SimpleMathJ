@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 
 public interface APIQuoteInterface {
 
-//    @Headers("Content-Type: application/json")
     @GET("api/quotes")
     Call<List<Quote>> getData();
+
 }
