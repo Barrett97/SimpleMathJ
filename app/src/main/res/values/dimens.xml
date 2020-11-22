@@ -6,4 +6,6 @@
     <dimen name="board_cell">80dp</dimen>
 
     <dimen name="button_height">80dp</dimen>
+
+    <dimen name="quote_textview_padding">5dp</dimen>
 </resources>

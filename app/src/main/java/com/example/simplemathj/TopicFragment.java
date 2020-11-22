@@ -2,6 +2,7 @@ package com.example.simplemathj;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,14 +26,13 @@ public class TopicFragment extends Fragment {
 
     TextView quote;
     TextView author;
+    View quoteCard;
     List<Quote> quoteList;
     QuoteController quoteController;
     SetQuoteListener setQuoteListener;
-    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        context = container.getContext();
         return inflater.inflate(R.layout.fragment_topic, container, false);
     }
 
@@ -63,6 +63,7 @@ public class TopicFragment extends Fragment {
     }
 
     private void setViews(View view) {
+        quoteCard = view.findViewById(R.id.quoteCard);
         quote = view.findViewById(R.id.textViewQuote);
         author = view.findViewById(R.id.textViewAuthor);
     }
@@ -77,7 +78,7 @@ public class TopicFragment extends Fragment {
                                .navigate(R.id.action_TopicFragment_to_SecondFragment));
 
         // retrieves random quote
-        quote.setOnClickListener(v -> {
+        quoteCard.setOnClickListener(v -> {
             int i = RandomNumber.generateBetween(quoteList.size()-1, 0);
             quote.setText(quoteList.get(i).getText());
             try {
