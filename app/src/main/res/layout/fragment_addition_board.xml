@@ -9,116 +9,135 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/LayoutBoard"
-        app:columnCount="5" >
+        app:columnCount="5">
 
-        <NumberPicker
-            android:id="@+id/npCell00"
+        <EditText
+            android:id="@+id/etCell00"
             app:layout_columnWeight="1"
-            android:layout_height="@dimen/board_cell"
-            android:background="@color/white"
-            />
-
-        <NumberPicker
-            android:id="@+id/npCell01"
-            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"
             />
 
-        <NumberPicker
-            android:id="@+id/npCell02"
+        <EditText
+            android:id="@+id/etCell01"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"
             />
 
-        <NumberPicker
-            android:id="@+id/npCell03"
+        <EditText
+            android:id="@+id/etCell02"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"
             />
 
-        <NumberPicker
-            android:id="@+id/npCell04"
+        <EditText
+            android:id="@+id/etCell03"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_height="@dimen/board_cell"
+            />
+
+        <EditText
+            android:id="@+id/etCell04"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"
             />
 
         <TextView
             android:id="@+id/tvCell10"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
         <TextView
             android:id="@+id/tvCell11"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
         <TextView
             android:id="@+id/tvCell12"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
         <TextView
             android:id="@+id/tvCell13"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
         <TextView
             android:id="@+id/tvCell14"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
         <TextView
             android:id="@+id/tvCell20"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
         <TextView
             android:id="@+id/tvCell21"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
         <TextView
             android:id="@+id/tvCell22"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
         <TextView
             android:id="@+id/tvCell23"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
         <TextView
             android:id="@+id/tvCell24"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"/>
 
-        <NumberPicker
-            android:id="@+id/npCell30"
+        <EditText
+            android:id="@+id/etCell30"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"
             />
 
-        <NumberPicker
-            android:id="@+id/npCell31"
+        <EditText
+            android:id="@+id/etCell31"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"
             />
 
-        <NumberPicker
-            android:id="@+id/npCell32"
+        <EditText
+            android:id="@+id/etCell32"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"
             />
 
-        <NumberPicker
-            android:id="@+id/npCell33"
+        <EditText
+            android:id="@+id/etCell33"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"
             />
 
-        <NumberPicker
-            android:id="@+id/npCell34"
+        <EditText
+            android:id="@+id/etCell34"
             app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             android:layout_height="@dimen/board_cell"
             />
 

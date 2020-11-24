@@ -13,7 +13,8 @@
 
         <action
             android:id="@+id/action_TopicFragment_to_SecondFragment"
-            app:destination="@id/MathFragment" />
+            app:destination="@id/MathFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
 
         <action
             android:id="@+id/action_TopicFragment_to_SettingsFragment"
@@ -36,11 +37,13 @@
 
         <action
             android:id="@+id/action_TopicFragment_to_ThirdFragment"
-            app:destination="@id/SimpleArithFragment" />
+            app:destination="@id/SimpleArithFragment"
+            app:enterAnim="@anim/fragment_open_enter" />
 
         <action
             android:id="@+id/action_TopicFragment_to_AddBoardFragment"
-            app:destination="@id/AddBoardFragment" />
+            app:destination="@id/AddBoardFragment"
+            app:enterAnim="@anim/fragment_open_enter" />
     </fragment>
 
     <fragment
