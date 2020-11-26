@@ -1,7 +1,7 @@
 package com.example.simplemathj.math;
 
 import android.graphics.Color;
-import android.os.Build;
+
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -14,18 +14,14 @@ import android.widget.TextView;
 import com.example.simplemathj.R;
 import com.example.simplemathj.util.RandomNumber;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import static android.view.Gravity.CENTER;
-import static android.view.Gravity.CENTER_HORIZONTAL;
 
 public class AddSubBoardFragment extends Fragment {
 

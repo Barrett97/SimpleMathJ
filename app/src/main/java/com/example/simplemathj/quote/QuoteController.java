@@ -2,7 +2,6 @@ package com.example.simplemathj.quote;
 
 import android.util.Log;
 
-import com.example.simplemathj.util.RandomNumber;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

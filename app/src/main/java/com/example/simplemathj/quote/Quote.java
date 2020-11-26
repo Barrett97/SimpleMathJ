@@ -1,6 +1,5 @@
 package com.example.simplemathj.quote;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Quote {

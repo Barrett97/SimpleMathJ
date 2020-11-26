@@ -20,7 +20,6 @@ import com.example.simplemathj.util.RandomNumber;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import java.util.Objects;
 import java.util.Random;
 
 /*

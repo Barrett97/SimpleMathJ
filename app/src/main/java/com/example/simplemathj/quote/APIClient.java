@@ -1,8 +1,5 @@
 package com.example.simplemathj.quote;
 
-import androidx.annotation.RestrictTo;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
