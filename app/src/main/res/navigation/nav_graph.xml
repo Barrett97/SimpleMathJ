@@ -48,7 +48,7 @@
 
     <fragment
         android:id="@+id/SimpleArithFragment"
-        android:name="com.example.simplemathj.math.SimpleArithFragment"
+        android:name="com.example.simplemathj.math.simpleArith.SimpleArithFragment"
         android:label="@string/third_fragment_label"
         tools:layout="@layout/fragment_third">
 

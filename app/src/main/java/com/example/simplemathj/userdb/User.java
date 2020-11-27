@@ -1,4 +1,4 @@
-package com.example.simplemathj.db;
+package com.example.simplemathj.userdb;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -14,4 +14,7 @@ public class User {
 
     @ColumnInfo(name = "last_name")
     public String lastName;
+
+    @ColumnInfo(name = "score")
+    public int score;
 }

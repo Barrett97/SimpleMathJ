@@ -1,4 +1,4 @@
-package com.example.simplemathj.db;
+package com.example.simplemathj.userdb;
 
 import android.content.Context;
 

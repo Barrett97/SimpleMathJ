@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".math.SimpleArithFragment"
+    tools:context=".math.simpleArith.SimpleArithFragment"
     android:padding="@dimen/button_padding">
 
     <RelativeLayout
@@ -36,7 +36,7 @@
             android:background="@android:color/holo_orange_light"/>
 
         <TextView
-            android:id="@+id/checkcross"
+            android:id="@+id/rightWrongSymbol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="50sp"

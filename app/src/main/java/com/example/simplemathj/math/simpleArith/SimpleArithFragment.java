@@ -1,4 +1,4 @@
-package com.example.simplemathj.math;
+package com.example.simplemathj.math.simpleArith;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -19,8 +19,7 @@ import com.example.simplemathj.util.RandomNumber;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-import java.util.Random;
+import androidx.lifecycle.ViewModelProvider;
 
 /*
 * This fragment contains the simple arithmetic questions
@@ -28,17 +27,23 @@ import java.util.Random;
 */
 public class SimpleArithFragment extends Fragment {
 
+    private SimpleArithViewModel simpleArithViewModel;
+
     private static int a, b, state;
+    // Arithmetic symbol 
     private static String arith;
     private Button nextButton;
     private EditText ans;
-    private TextView eq, checkcross;
+    private TextView eq, rightWrongSymbol;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+
+        simpleArithViewModel = new ViewModelProvider(requireActivity()).get(SimpleArithViewModel.class);
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_third, container, false);
     }
@@ -61,7 +66,7 @@ public class SimpleArithFragment extends Fragment {
         ans = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextQ);
         nextButton.setVisibility(View.INVISIBLE);
-        checkcross = view.findViewById(R.id.checkcross);
+        rightWrongSymbol = view.findViewById(R.id.rightWrongSymbol);
         state = ((MainActivity) requireActivity()).getState();
     }
     /*
@@ -74,13 +79,13 @@ public class SimpleArithFragment extends Fragment {
         ans.setOnKeyListener((view, i, keyEvent) -> {
             if (i == KeyEvent.KEYCODE_ENTER) {
                 if (ans.getText().toString().trim().length() > 0) {
-                    checkcross.setVisibility(View.VISIBLE);
+                    rightWrongSymbol.setVisibility(View.VISIBLE);
                     if (checkAnswer(a, b, ans.getText().toString())) {
-                        checkcross.setText(R.string.check);
-                        checkcross.setTextColor(Color.GREEN);
+                        rightWrongSymbol.setText(R.string.check);
+                        rightWrongSymbol.setTextColor(Color.GREEN);
                     } else {
-                        checkcross.setText(R.string.cross);
-                        checkcross.setTextColor(Color.RED);
+                        rightWrongSymbol.setText(R.string.cross);
+                        rightWrongSymbol.setTextColor(Color.RED);
                     }
                     nextButton.setVisibility(View.VISIBLE);
                 }
@@ -106,14 +111,6 @@ public class SimpleArithFragment extends Fragment {
     }
 
     /*
-    Return a random integer greater than x and less than y
-     */
-    private int generateNumber(int max, int min) {
-        Random random = new Random();
-        return random.nextInt(max - min + 1) + min;
-    }
-
-    /*
     Check if a * b is equal to ans
      */
     private boolean checkAnswer(int a, int b, String ans) {
@@ -133,7 +130,7 @@ public class SimpleArithFragment extends Fragment {
      */
     private void nextQuestion() {
         ans.getText().clear();
-        checkcross.setVisibility(View.INVISIBLE);
+        rightWrongSymbol.setVisibility(View.INVISIBLE);
         nextButton.setVisibility(View.INVISIBLE);
 
         // TODO: make settable bounds
