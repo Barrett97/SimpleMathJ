@@ -1,54 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".math.MathFragment"
-    android:padding="@dimen/button_padding">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".math.MathFragment"
+        android:padding="@dimen/button_padding">
 
-        <Button
-            android:id="@+id/aplusb"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/aplusb"
-            style="@style/MainButtons"/>
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/axb"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/axb"
-            android:layout_below="@id/aplusb"
-            style="@style/MainButtons"/>
+            <Button
+                android:id="@+id/aplusb"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/aplusb"
+                style="@style/MainButtons"/>
 
-        <Button
-            android:id="@+id/adivb"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/adivb"
-            android:layout_below="@id/axb"
-            style="@style/MainButtons" />
+            <Button
+                android:id="@+id/axb"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/axb"
+                android:layout_below="@id/aplusb"
+                style="@style/MainButtons"/>
 
-        <Button
-            android:id="@+id/addBoard"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/addBoard"
-            android:layout_below="@id/adivb"
-            style="@style/MainButtons"/>
+            <Button
+                android:id="@+id/adivb"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/adivb"
+                android:layout_below="@id/axb"
+                style="@style/MainButtons" />
 
-        <Button
-            android:id="@+id/multBoard"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/multBoard"
-            android:layout_below="@id/addBoard"
-            style="@style/MainButtons"/>
+            <Button
+                android:id="@+id/addBoard"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/addBoard"
+                android:layout_below="@id/adivb"
+                style="@style/MainButtons"/>
 
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/multBoard"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/multBoard"
+                android:layout_below="@id/addBoard"
+                style="@style/MainButtons"/>
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

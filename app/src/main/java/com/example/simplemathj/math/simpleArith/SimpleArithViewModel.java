@@ -30,8 +30,17 @@ public class SimpleArithViewModel extends ViewModel {
     }
 
     public LiveData<Integer> getFirstNumber() {
-        
+        return firstNumber;
     }
+
+    public void setSecondNumber() {
+        secondNumber.setValue(RandomNumber.generateTo(20));
+    }
+
+    public LiveData<Integer> getSecondNumber() {
+        return secondNumber;
+    }
+
 
 
 }

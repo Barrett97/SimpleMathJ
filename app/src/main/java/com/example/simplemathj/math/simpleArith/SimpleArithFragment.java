@@ -62,6 +62,8 @@ public class SimpleArithFragment extends Fragment {
     Initializes the views and sets variables
      */
     private void init(View view) {
+
+
         eq = view.findViewById(R.id.textViewQuestion);
         ans = view.findViewById(R.id.editTextAnswer);
         nextButton = view.findViewById(R.id.nextQ);

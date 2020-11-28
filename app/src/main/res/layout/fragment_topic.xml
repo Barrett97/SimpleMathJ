@@ -1,42 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TopicFragment"
-    android:padding="@dimen/button_padding">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+        <variable
+            name="TopicFragment"
+            type="com.example.simplemathj.TopicFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context=".TopicFragment"
+        android:padding="@dimen/button_padding">
 
-        <Button
-            android:id="@+id/mathButton"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/math"
-            android:textSize="15sp"
-            style="@style/MainButtons"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/langButton"
+            <Button
+                android:id="@+id/mathButton"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/math"
+                android:textSize="15sp"
+                android:onClick="@{()->TopicFragment.navToMathTopics()}"
+                style="@style/MainButtons"
+                />
+
+            <Button
+                android:id="@+id/langButton"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/language"
+                android:textSize="15sp"
+                style="@style/MainButtons" />
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/quote_layout"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/language"
-            android:textSize="15sp"
-            style="@style/MainButtons" />
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-    </LinearLayout>
-
-    <include
-        layout="@layout/quote_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

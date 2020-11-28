@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.simplemathj.databinding.FragmentTopicBinding;
 import com.example.simplemathj.quote.Quote;
 import com.example.simplemathj.quote.QuoteController;
 import com.example.simplemathj.quote.SetQuoteListener;
@@ -15,6 +16,7 @@ import com.example.simplemathj.util.RandomNumber;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -31,7 +33,9 @@ public class TopicFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_topic, container, false);
+        FragmentTopicBinding binding = FragmentTopicBinding.inflate(getLayoutInflater());
+//        return inflater.inflate(R.layout.fragment_topic, container, false);
+        return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class TopicFragment extends Fragment {
 
         setQuoteListener = response -> {
             quoteList = response.body();
+            assert quoteList != null;
             int i = RandomNumber.generateBetween(quoteList.size()-1, 0);
             quote.setText(quoteList.get(i).getText());
             String authorText = "- " + quoteList.get(i).getAuthor();
@@ -66,10 +71,15 @@ public class TopicFragment extends Fragment {
         author = view.findViewById(R.id.textViewAuthor);
     }
 
+    public void navToMathTopics() {
+        NavHostFragment.findNavController(TopicFragment.this)
+                .navigate(R.id.action_TopicFragment_to_SecondFragment);
+    }
+
     private void setListeners(View view) {
-        view.findViewById(R.id.mathButton).setOnClickListener(view1 ->
-                NavHostFragment.findNavController(TopicFragment.this)
-                               .navigate(R.id.action_TopicFragment_to_SecondFragment));
+//        view.findViewById(R.id.mathButton).setOnClickListener(view1 ->
+//                NavHostFragment.findNavController(TopicFragment.this)
+//                               .navigate(R.id.action_TopicFragment_to_SecondFragment));
 
         view.findViewById(R.id.langButton).setOnClickListener(view12 ->
                 NavHostFragment.findNavController(TopicFragment.this)
