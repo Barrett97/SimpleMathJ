@@ -71,6 +71,7 @@ public class TopicFragment extends Fragment {
         author = view.findViewById(R.id.textViewAuthor);
     }
 
+    // TODO
     public void navToMathTopics() {
         NavHostFragment.findNavController(TopicFragment.this)
                 .navigate(R.id.action_TopicFragment_to_SecondFragment);
