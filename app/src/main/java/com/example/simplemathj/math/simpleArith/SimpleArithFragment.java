@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.example.simplemathj.MainActivity;
 import com.example.simplemathj.R;
+import com.example.simplemathj.math.MathTopic;
+import com.example.simplemathj.util.MathCheck;
 import com.example.simplemathj.util.RandomNumber;
 
 import androidx.annotation.NonNull;
@@ -29,9 +31,6 @@ public class SimpleArithFragment extends Fragment {
 
     private SimpleArithViewModel simpleArithViewModel;
 
-    private static int a, b, state;
-    // Arithmetic symbol 
-    private static String arith;
     private Button nextButton;
     private EditText ans;
     private TextView eq, rightWrongSymbol;
@@ -44,6 +43,8 @@ public class SimpleArithFragment extends Fragment {
 
         simpleArithViewModel = new ViewModelProvider(requireActivity()).get(SimpleArithViewModel.class);
 
+        System.out.println(simpleArithViewModel.getState().toString());
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_third, container, false);
     }
@@ -53,7 +54,6 @@ public class SimpleArithFragment extends Fragment {
 
         init(view);
         triggerKeyboard();
-        setArith();
         nextQuestion();
         setListeners();
 
@@ -69,7 +69,6 @@ public class SimpleArithFragment extends Fragment {
         nextButton = view.findViewById(R.id.nextQ);
         nextButton.setVisibility(View.INVISIBLE);
         rightWrongSymbol = view.findViewById(R.id.rightWrongSymbol);
-        state = ((MainActivity) requireActivity()).getState();
     }
     /*
     Set the listeners for this class
@@ -82,7 +81,9 @@ public class SimpleArithFragment extends Fragment {
             if (i == KeyEvent.KEYCODE_ENTER) {
                 if (ans.getText().toString().trim().length() > 0) {
                     rightWrongSymbol.setVisibility(View.VISIBLE);
-                    if (checkAnswer(a, b, ans.getText().toString())) {
+                    if (checkAnswer(simpleArithViewModel.getFirstNumber(),
+                            simpleArithViewModel.getSecondNumber(),
+                            ans.getText().toString())) {
                         rightWrongSymbol.setText(R.string.check);
                         rightWrongSymbol.setTextColor(Color.GREEN);
                     } else {
@@ -100,31 +101,23 @@ public class SimpleArithFragment extends Fragment {
     }
 
     /*
-    Set the arithmetic symbol for display
-     */
-    public void setArith() {
-        if (state == 1) { // addition
-            arith = " + ";
-        } else if (state == 2) { // multiplication
-            arith = " X ";
-        } else if (state == 3) { // division
-            arith = " / ";
-        }
-    }
-
-    /*
     Check if a * b is equal to ans
      */
     private boolean checkAnswer(int a, int b, String ans) {
         int answer = Integer.parseInt(ans);
-        if (state == 1 && a+b == answer) { // addition
-            return true;
-        } else if (state == 2 && a*b == answer) { // multiplication
-            return true;
-        } else if (state == 3 && a/b == answer) { // division
-            return true;
+        boolean isCorrect = false;
+        switch (simpleArithViewModel.getState()) {
+            case ADDITION:
+                isCorrect = MathCheck.add(a, b, answer);
+                break;
+            case MULTIPLICATION:
+                isCorrect = MathCheck.mult(a, b, answer);
+                break;
+            case DIVISION:
+                isCorrect = MathCheck.div(a, b , answer);
+                break;
         }
-        return false;
+        return isCorrect;
     }
 
     /*
@@ -136,9 +129,9 @@ public class SimpleArithFragment extends Fragment {
         nextButton.setVisibility(View.INVISIBLE);
 
         // TODO: make settable bounds
-        a = RandomNumber.generateBetween(20, 2);
-        b = RandomNumber.generateBetween(20, 2);
-        String question = a + arith + b;
+        simpleArithViewModel.setFirstNumber();
+        simpleArithViewModel.setSecondNumber();
+        String question = simpleArithViewModel.getFirstNumber() + simpleArithViewModel.getSign() + simpleArithViewModel.getSecondNumber();
 
         eq.setText(question);
     }

@@ -2,6 +2,7 @@ package com.example.simplemathj.math.simpleArith;
 
 import com.example.simplemathj.math.MathTopic;
 import com.example.simplemathj.util.RandomNumber;
+import com.google.android.material.theme.overlay.MaterialThemeOverlay;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -9,36 +10,56 @@ import androidx.lifecycle.ViewModel;
 
 public class SimpleArithViewModel extends ViewModel {
 
-    private MutableLiveData<String> arithmetic;
 
-    private MutableLiveData<Integer> firstNumber;
+    private Integer _firstNumber;
 
-    private MutableLiveData<Integer> secondNumber;
+    private Integer _secondNumber;
 
-    private MutableLiveData<MathTopic> state;
+    private MathTopic _state;
+
+    private String sign;
 
     public void setState(MathTopic state) {
-        this.state.setValue(state);
+        _state = state;
+        setSign(_state);
     }
 
-    public LiveData<MathTopic> getState() {
-        return state;
+    private void setSign(MathTopic state) {
+        switch(state) {
+            case ADDITION:
+                sign = " + ";
+                break;
+            case MULTIPLICATION:
+                sign = " x ";
+                break;
+            case DIVISION:
+                sign = " / ";
+                break;
+        }
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public MathTopic getState() {
+        return _state;
     }
 
     public void setFirstNumber() {
-        firstNumber.setValue(RandomNumber.generateTo(20));
+        _firstNumber = RandomNumber.generateTo(20);
     }
 
-    public LiveData<Integer> getFirstNumber() {
-        return firstNumber;
+    public Integer getFirstNumber() {
+        return _firstNumber;
     }
 
     public void setSecondNumber() {
-        secondNumber.setValue(RandomNumber.generateTo(20));
+        _secondNumber = RandomNumber.generateTo(20);
     }
 
-    public LiveData<Integer> getSecondNumber() {
-        return secondNumber;
+    public Integer getSecondNumber() {
+        return _secondNumber;
     }
 
 

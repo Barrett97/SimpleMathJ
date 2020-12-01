@@ -27,7 +27,6 @@
                 android:layout_height="80dp"
                 android:text="@string/math"
                 android:textSize="15sp"
-                android:onClick="@{()->TopicFragment.navToMathTopics()}"
                 style="@style/MainButtons"
                 />
 
