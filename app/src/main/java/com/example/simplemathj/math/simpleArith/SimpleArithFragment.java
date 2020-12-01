@@ -113,6 +113,9 @@ public class SimpleArithFragment extends Fragment {
             case MULTIPLICATION:
                 isCorrect = MathCheck.mult(a, b, answer);
                 break;
+            case SUBTRACTION:
+                isCorrect = MathCheck.sub(a, b, answer);
+                break;
             case DIVISION:
                 isCorrect = MathCheck.div(a, b , answer);
                 break;

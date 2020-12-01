@@ -31,31 +31,35 @@ public class MathFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.aplusb).setOnClickListener(view1 -> {
+        view.findViewById(R.id.aplusb).setOnClickListener(v -> {
             NavHostFragment.findNavController(MathFragment.this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
             simpleArithViewModel.setState(MathTopic.ADDITION);
-            ((MainActivity) requireActivity()).setState(1);
         });
 
-        view.findViewById(R.id.axb).setOnClickListener(view2 -> {
+        view.findViewById(R.id.asubb).setOnClickListener(v -> {
+            NavHostFragment.findNavController(MathFragment.this)
+                    .navigate(R.id.action_TopicFragment_to_ThirdFragment);
+
+            simpleArithViewModel.setState(MathTopic.SUBTRACTION);
+        });
+
+        view.findViewById(R.id.axb).setOnClickListener(v -> {
             NavHostFragment.findNavController(MathFragment.this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
             simpleArithViewModel.setState(MathTopic.MULTIPLICATION);
-            ((MainActivity) requireActivity()).setState(2);
         });
 
-        view.findViewById(R.id.adivb).setOnClickListener(view3 -> {
+        view.findViewById(R.id.adivb).setOnClickListener(v -> {
             NavHostFragment.findNavController(MathFragment.this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
             simpleArithViewModel.setState(MathTopic.DIVISION);
-            ((MainActivity) requireActivity()).setState(3);
         });
 
-        view.findViewById(R.id.addBoard).setOnClickListener(view4 -> {
+        view.findViewById(R.id.addBoard).setOnClickListener(v -> {
             NavHostFragment.findNavController(MathFragment.this)
                     .navigate(R.id.action_TopicFragment_to_AddBoardFragment);
         });

@@ -2,6 +2,7 @@
   <dictionary name="Barrett">
     <words>
       <w>arith</w>
+      <w>mult</w>
       <w>textview</w>
     </words>
   </dictionary>

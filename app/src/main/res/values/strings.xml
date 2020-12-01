@@ -23,6 +23,7 @@
 
     <!--Math Fragment-->
     <string name="aplusb">A + B = C</string>
+    <string name="asubb">A - B = C</string>
     <string name="axb">A x B = C</string>
     <string name="adivb">A / B = C</string>
     <string name="multBoard">Multi Digit Multiplication</string>

@@ -22,12 +22,20 @@
                 style="@style/MainButtons"/>
 
             <Button
+                android:id="@+id/asubb"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/asubb"
+                android:layout_below="@id/aplusb"
+                style="@style/MainButtons"/>
+
+            <Button
                 android:id="@+id/axb"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:text="@string/axb"
-                android:layout_below="@id/aplusb"
-                style="@style/MainButtons"/>
+                android:layout_below="@id/asubb"
+                style="@style/MainButtons" />
 
             <Button
                 android:id="@+id/adivb"

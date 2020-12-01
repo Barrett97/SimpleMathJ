@@ -21,7 +21,6 @@ import com.example.simplemathj.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
-    public int state = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +71,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
-
-    public int getState() {
-        return state;
     }
 
     @Override

@@ -29,6 +29,9 @@ public class SimpleArithViewModel extends ViewModel {
             case ADDITION:
                 sign = " + ";
                 break;
+            case SUBTRACTION:
+                sign = " - ";
+                break;
             case MULTIPLICATION:
                 sign = " x ";
                 break;
