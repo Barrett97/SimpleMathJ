@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.example.simplemathj.MainActivity;
 import com.example.simplemathj.R;
+import com.example.simplemathj.databinding.FragmentSimpleArithBinding;
 import com.example.simplemathj.math.simpleArith.SimpleArithViewModel;
 
 import androidx.annotation.NonNull;
