@@ -19,8 +19,8 @@ import org.jetbrains.annotations.NotNull;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import io.*;
 
 /*
 * This fragment contains the simple arithmetic questions
@@ -28,7 +28,7 @@ import io.*;
 */
 public class SimpleArithFragment extends Fragment {
 
-    private SimpleArithViewModel simpleArithViewModel;
+    private SimpleArithViewModel viewModel;
     private FragmentSimpleArithBinding binding;
 
     @Override
@@ -36,25 +36,39 @@ public class SimpleArithFragment extends Fragment {
             @NotNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        simpleArithViewModel = new ViewModelProvider(requireActivity()).get(SimpleArithViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(SimpleArithViewModel.class);
         binding = FragmentSimpleArithBinding.inflate(inflater);
+        binding.setViewModel(viewModel);
+
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        viewModel.secondNumber.observe(getViewLifecycleOwner(), integer -> {
+            binding.editTextAnswer.getText().clear();
+            binding.rightWrongSymbol.setVisibility(View.INVISIBLE);
+            binding.nextQ.setVisibility(View.INVISIBLE);
+
+            // TODO: make settable bounds
+//            viewModel.setFirstNumberRand();
+//            viewModel.setSecondNumberRand();
+            String question = viewModel.getFirstNumber() + viewModel.getSign() + viewModel.getSecondNumber();
+
+            binding.textViewQuestion.setText(question);
+        });
+
         triggerKeyboard();
-        nextQuestion();
+        initQuestion();
         setListeners();
 
-
         if (savedInstanceState != null) {
-            simpleArithViewModel.setFirstNumber(savedInstanceState.getInt("firstNumber"));
-            simpleArithViewModel.setSecondNumber(savedInstanceState.getInt("secondNumber"));
-            String question = simpleArithViewModel.getFirstNumber()
-                    + simpleArithViewModel.getSign()
-                    + simpleArithViewModel.getSecondNumber();
+            viewModel.setFirstNumber(savedInstanceState.getInt("firstNumber"));
+            viewModel.setSecondNumber(savedInstanceState.getInt("secondNumber"));
+            String question = viewModel.getFirstNumber()
+                    + viewModel.getSign()
+                    + viewModel.getSecondNumber();
             binding.textViewQuestion.setText(question);
         }
     }
@@ -68,8 +82,8 @@ public class SimpleArithFragment extends Fragment {
             if (i == KeyEvent.KEYCODE_ENTER) {
                 if (binding.editTextAnswer.getText().toString().length() > 0) {
                     binding.rightWrongSymbol.setVisibility(View.VISIBLE);
-                    if (checkAnswer(simpleArithViewModel.getFirstNumber(),
-                            simpleArithViewModel.getSecondNumber(),
+                    if (checkAnswer(viewModel.getFirstNumber(),
+                            viewModel.getSecondNumber(),
                             binding.editTextAnswer.getText().toString())) {
                         binding.rightWrongSymbol.setText(R.string.check);
                         binding.rightWrongSymbol.setTextColor(Color.GREEN);
@@ -85,7 +99,7 @@ public class SimpleArithFragment extends Fragment {
         });
 
         // Load next question
-        binding.nextQ.setOnClickListener(view -> nextQuestion());
+//        binding.nextQ.setOnClickListener(view -> nextQuestion());
     }
 
     /*
@@ -94,7 +108,7 @@ public class SimpleArithFragment extends Fragment {
     private boolean checkAnswer(int a, int b, String ans) {
         int answer = Integer.parseInt(ans);
         boolean isCorrect = false;
-        switch (simpleArithViewModel.getState()) {
+        switch (viewModel.getState()) {
             case ADDITION:
                 isCorrect = MathChecker.add(a, b, answer);
                 break;
@@ -114,15 +128,14 @@ public class SimpleArithFragment extends Fragment {
     /*
     Replace the question with the next
      */
-    public void nextQuestion() {
+    public void initQuestion() {
         binding.editTextAnswer.getText().clear();
         binding.rightWrongSymbol.setVisibility(View.INVISIBLE);
         binding.nextQ.setVisibility(View.INVISIBLE);
 
         // TODO: make settable bounds
-        simpleArithViewModel.setFirstNumberRand();
-        simpleArithViewModel.setSecondNumberRand();
-        String question = simpleArithViewModel.getFirstNumber() + simpleArithViewModel.getSign() + simpleArithViewModel.getSecondNumber();
+        viewModel.init();
+        String question = viewModel.getFirstNumber() + viewModel.getSign() + viewModel.getSecondNumber();
 
         binding.textViewQuestion.setText(question);
     }
@@ -151,7 +164,7 @@ public class SimpleArithFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("firstNumber", simpleArithViewModel.getFirstNumber());
-        outState.putInt("secondNumber", simpleArithViewModel.getSecondNumber());
+        outState.putInt("firstNumber", viewModel.getFirstNumber());
+        outState.putInt("secondNumber", viewModel.getSecondNumber());
     }
 }
