@@ -9,18 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.simplemathj.R;
 import com.example.simplemathj.databinding.FragmentSimpleArithBinding;
-import com.example.simplemathj.util.MathCheck;
+import com.example.simplemathj.util.MathChecker;
+
+import org.jetbrains.annotations.NotNull;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import io.*;
 
 /*
 * This fragment contains the simple arithmetic questions
@@ -33,12 +33,11 @@ public class SimpleArithFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NotNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
         simpleArithViewModel = new ViewModelProvider(requireActivity()).get(SimpleArithViewModel.class);
         binding = FragmentSimpleArithBinding.inflate(inflater);
-
         return binding.getRoot();
     }
 
@@ -48,6 +47,16 @@ public class SimpleArithFragment extends Fragment {
         triggerKeyboard();
         nextQuestion();
         setListeners();
+
+
+        if (savedInstanceState != null) {
+            simpleArithViewModel.setFirstNumber(savedInstanceState.getInt("firstNumber"));
+            simpleArithViewModel.setSecondNumber(savedInstanceState.getInt("secondNumber"));
+            String question = simpleArithViewModel.getFirstNumber()
+                    + simpleArithViewModel.getSign()
+                    + simpleArithViewModel.getSecondNumber();
+            binding.textViewQuestion.setText(question);
+        }
     }
 
     /*
@@ -87,16 +96,16 @@ public class SimpleArithFragment extends Fragment {
         boolean isCorrect = false;
         switch (simpleArithViewModel.getState()) {
             case ADDITION:
-                isCorrect = MathCheck.add(a, b, answer);
+                isCorrect = MathChecker.add(a, b, answer);
                 break;
             case MULTIPLICATION:
-                isCorrect = MathCheck.mult(a, b, answer);
+                isCorrect = MathChecker.mult(a, b, answer);
                 break;
             case SUBTRACTION:
-                isCorrect = MathCheck.sub(a, b, answer);
+                isCorrect = MathChecker.sub(a, b, answer);
                 break;
             case DIVISION:
-                isCorrect = MathCheck.div(a, b , answer);
+                isCorrect = MathChecker.div(a, b , answer);
                 break;
         }
         return isCorrect;
@@ -111,8 +120,8 @@ public class SimpleArithFragment extends Fragment {
         binding.nextQ.setVisibility(View.INVISIBLE);
 
         // TODO: make settable bounds
-        simpleArithViewModel.setFirstNumber();
-        simpleArithViewModel.setSecondNumber();
+        simpleArithViewModel.setFirstNumberRand();
+        simpleArithViewModel.setSecondNumberRand();
         String question = simpleArithViewModel.getFirstNumber() + simpleArithViewModel.getSign() + simpleArithViewModel.getSecondNumber();
 
         binding.textViewQuestion.setText(question);
@@ -137,5 +146,12 @@ public class SimpleArithFragment extends Fragment {
     public void onStop() {
         super.onStop();
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("firstNumber", simpleArithViewModel.getFirstNumber());
+        outState.putInt("secondNumber", simpleArithViewModel.getSecondNumber());
     }
 }

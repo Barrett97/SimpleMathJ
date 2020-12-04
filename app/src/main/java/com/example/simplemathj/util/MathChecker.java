@@ -1,6 +1,6 @@
 package com.example.simplemathj.util;
 
-public class MathCheck {
+public class MathChecker {
 
     // Does x + y = z?
     public static boolean add(int x, int y, int z) {

@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModel;
 public class SimpleArithViewModel extends ViewModel {
 
 
-    private Integer _firstNumber;
+    private int _firstNumber;
 
-    private Integer _secondNumber;
+    private int _secondNumber;
 
     private MathTopic _state;
 
@@ -49,21 +49,35 @@ public class SimpleArithViewModel extends ViewModel {
         return _state;
     }
 
-    public void setFirstNumber() {
+    public void setFirstNumberRand() {
         _firstNumber = RandomNumber.generateTo(20);
     }
 
-    public Integer getFirstNumber() {
+    public int getFirstNumber() {
         return _firstNumber;
     }
 
-    public void setSecondNumber() {
+    public void setSecondNumberRand() {
         _secondNumber = RandomNumber.generateTo(20);
     }
 
-    public Integer getSecondNumber() {
+    public int getSecondNumber() {
         return _secondNumber;
     }
+
+    public void setFirstNumber(int x) {
+        _firstNumber = x;
+    }
+
+    public void setSecondNumber(int x) {
+        _secondNumber = x;
+    }
+
+    public void nextQuestion() {
+        _firstNumber = RandomNumber.generateTo(20);
+        _secondNumber = RandomNumber.generateTo(20);
+    }
+
 
 
 
