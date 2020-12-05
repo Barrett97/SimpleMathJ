@@ -69,7 +69,7 @@ public class AddSubBoardFragment extends Fragment {
 
         init(view);
         populateEditTexts();
-        populate2dArray();
+//        populate2dArray();
 
         checkAns.setOnClickListener(v -> {
            if (checkAnswer()) {

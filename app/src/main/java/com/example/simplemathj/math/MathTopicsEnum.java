@@ -1,6 +1,6 @@
 package com.example.simplemathj.math;
 
-public enum MathTopic {
+public enum MathTopicsEnum {
     ADDITION,
     SUBTRACTION,
     MULTIPLICATION,

@@ -19,7 +19,6 @@ import org.jetbrains.annotations.NotNull;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 /*
@@ -39,38 +38,36 @@ public class SimpleArithFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(SimpleArithViewModel.class);
         binding = FragmentSimpleArithBinding.inflate(inflater);
         binding.setViewModel(viewModel);
+        binding.setLifecycleOwner(this);
 
+        if (viewModel.getSecondNumber() == null) {
+            viewModel.init();
+        }
+
+        System.out.println("oncreateview");
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setObserver();
+        triggerKeyboard();
+        initQuestion();
+        setListeners();
+
+    }
+
+    private void setObserver() {
         viewModel.secondNumber.observe(getViewLifecycleOwner(), integer -> {
             binding.editTextAnswer.getText().clear();
             binding.rightWrongSymbol.setVisibility(View.INVISIBLE);
             binding.nextQ.setVisibility(View.INVISIBLE);
 
-            // TODO: make settable bounds
-//            viewModel.setFirstNumberRand();
-//            viewModel.setSecondNumberRand();
             String question = viewModel.getFirstNumber() + viewModel.getSign() + viewModel.getSecondNumber();
 
             binding.textViewQuestion.setText(question);
         });
-
-        triggerKeyboard();
-        initQuestion();
-        setListeners();
-
-        if (savedInstanceState != null) {
-            viewModel.setFirstNumber(savedInstanceState.getInt("firstNumber"));
-            viewModel.setSecondNumber(savedInstanceState.getInt("secondNumber"));
-            String question = viewModel.getFirstNumber()
-                    + viewModel.getSign()
-                    + viewModel.getSecondNumber();
-            binding.textViewQuestion.setText(question);
-        }
     }
 
     /*
@@ -134,7 +131,6 @@ public class SimpleArithFragment extends Fragment {
         binding.nextQ.setVisibility(View.INVISIBLE);
 
         // TODO: make settable bounds
-        viewModel.init();
         String question = viewModel.getFirstNumber() + viewModel.getSign() + viewModel.getSecondNumber();
 
         binding.textViewQuestion.setText(question);
@@ -159,12 +155,5 @@ public class SimpleArithFragment extends Fragment {
     public void onStop() {
         super.onStop();
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("firstNumber", viewModel.getFirstNumber());
-        outState.putInt("secondNumber", viewModel.getSecondNumber());
     }
 }

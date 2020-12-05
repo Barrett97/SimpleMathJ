@@ -5,9 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.simplemathj.MainActivity;
 import com.example.simplemathj.R;
-import com.example.simplemathj.databinding.FragmentSimpleArithBinding;
 import com.example.simplemathj.math.simpleArith.SimpleArithViewModel;
 
 import androidx.annotation.NonNull;
@@ -15,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-public class MathFragment extends Fragment {
+public class MathTopicsFragment extends Fragment {
 
     private SimpleArithViewModel simpleArithViewModel;
 
@@ -33,35 +31,35 @@ public class MathFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         view.findViewById(R.id.aplusb).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathFragment.this)
+            NavHostFragment.findNavController(MathTopicsFragment.this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
-            simpleArithViewModel.setState(MathTopic.ADDITION);
+            simpleArithViewModel.setState(MathTopicsEnum.ADDITION);
         });
 
         view.findViewById(R.id.asubb).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathFragment.this)
+            NavHostFragment.findNavController(MathTopicsFragment.this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
-            simpleArithViewModel.setState(MathTopic.SUBTRACTION);
+            simpleArithViewModel.setState(MathTopicsEnum.SUBTRACTION);
         });
 
         view.findViewById(R.id.axb).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathFragment.this)
+            NavHostFragment.findNavController(MathTopicsFragment.this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
-            simpleArithViewModel.setState(MathTopic.MULTIPLICATION);
+            simpleArithViewModel.setState(MathTopicsEnum.MULTIPLICATION);
         });
 
         view.findViewById(R.id.adivb).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathFragment.this)
+            NavHostFragment.findNavController(MathTopicsFragment.this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
-            simpleArithViewModel.setState(MathTopic.DIVISION);
+            simpleArithViewModel.setState(MathTopicsEnum.DIVISION);
         });
 
         view.findViewById(R.id.addBoard).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathFragment.this)
+            NavHostFragment.findNavController(MathTopicsFragment.this)
                     .navigate(R.id.action_TopicFragment_to_AddBoardFragment);
         });
 

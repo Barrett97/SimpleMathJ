@@ -1,6 +1,6 @@
 package com.example.simplemathj.math.simpleArith;
 
-import com.example.simplemathj.math.MathTopic;
+import com.example.simplemathj.math.MathTopicsEnum;
 import com.example.simplemathj.util.RandomNumber;
 
 import androidx.lifecycle.LiveData;
@@ -16,21 +16,22 @@ public class SimpleArithViewModel extends ViewModel {
     private MutableLiveData<Integer> _secondNumber = new MutableLiveData<>();
     public LiveData<Integer> secondNumber = _secondNumber;
 
-    private MathTopic _state;
+    private MathTopicsEnum _state;
 
     private String sign;
 
     public void init() {
+
         _firstNumber.setValue(RandomNumber.generateTo(20));
         _secondNumber.setValue(RandomNumber.generateTo(20));
     }
 
-    public void setState(MathTopic state) {
+    public void setState(MathTopicsEnum state) {
         _state = state;
         setSign(_state);
     }
 
-    private void setSign(MathTopic state) {
+    private void setSign(MathTopicsEnum state) {
         switch(state) {
             case ADDITION:
                 sign = " + ";
@@ -51,7 +52,7 @@ public class SimpleArithViewModel extends ViewModel {
         return sign;
     }
 
-    public MathTopic getState() {
+    public MathTopicsEnum getState() {
         return _state;
     }
 
