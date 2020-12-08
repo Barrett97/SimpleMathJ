@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModel;
 
 public class SimpleArithViewModel extends ViewModel {
 
+    private MutableLiveData<String> _equation = new MutableLiveData<>();
+    public LiveData<String> equation = _equation;
 
     private MutableLiveData<Integer> _firstNumber = new MutableLiveData<>();
     public LiveData<Integer> firstNumber = _firstNumber;
@@ -28,6 +30,14 @@ public class SimpleArithViewModel extends ViewModel {
     public void setState(MathTopicsEnum state) {
         _state = state;
         setSign(_state);
+    }
+
+    public String getEquation() {
+        return getFirstNumber().toString() + getSign() + getSecondNumber().toString();
+    }
+
+    public void setEquation() {
+        _equation.setValue(getFirstNumber().toString() + getSign() + getSecondNumber().toString());
     }
 
     private void setSign(MathTopicsEnum state) {
@@ -82,6 +92,7 @@ public class SimpleArithViewModel extends ViewModel {
     public void nextQuestion() {
         _firstNumber.setValue(RandomNumber.generateTo(20));
         _secondNumber.setValue(RandomNumber.generateTo(20));
+        setEquation();
     }
 
 

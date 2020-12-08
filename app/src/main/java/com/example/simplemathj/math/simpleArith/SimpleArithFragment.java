@@ -38,7 +38,7 @@ public class SimpleArithFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(SimpleArithViewModel.class);
         binding = FragmentSimpleArithBinding.inflate(inflater);
         binding.setViewModel(viewModel);
-        binding.setLifecycleOwner(this);
+        binding.setLifecycleOwner(getViewLifecycleOwner());
 
         if (viewModel.getSecondNumber() == null) {
             viewModel.init();
@@ -52,7 +52,6 @@ public class SimpleArithFragment extends Fragment {
 
         setObserver();
         triggerKeyboard();
-        initQuestion();
         setListeners();
     }
 
@@ -119,20 +118,6 @@ public class SimpleArithFragment extends Fragment {
                 break;
         }
         return isCorrect;
-    }
-
-    /*
-    Initialize the question from viewModel
-     */
-    public void initQuestion() {
-        binding.editTextAnswer.getText().clear();
-        binding.rightWrongSymbol.setVisibility(View.INVISIBLE);
-        binding.nextQ.setVisibility(View.INVISIBLE);
-
-        // TODO: make settable bounds
-        String question = viewModel.getFirstNumber() + viewModel.getSign() + viewModel.getSecondNumber();
-
-        binding.textViewQuestion.setText(question);
     }
 
     /*
