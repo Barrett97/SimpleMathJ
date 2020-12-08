@@ -44,7 +44,6 @@ public class SimpleArithFragment extends Fragment {
             viewModel.init();
         }
 
-        System.out.println("oncreateview");
         return binding.getRoot();
     }
 
@@ -55,9 +54,11 @@ public class SimpleArithFragment extends Fragment {
         triggerKeyboard();
         initQuestion();
         setListeners();
-
     }
 
+    /*
+    Observe for changes in the question
+    */
     private void setObserver() {
         viewModel.secondNumber.observe(getViewLifecycleOwner(), integer -> {
             binding.editTextAnswer.getText().clear();
@@ -75,6 +76,7 @@ public class SimpleArithFragment extends Fragment {
      */
     private void setListeners() {
 
+        // Listen for "enter" key
         binding.editTextAnswer.setOnKeyListener((view, i, keyEvent) -> {
             if (i == KeyEvent.KEYCODE_ENTER) {
                 if (binding.editTextAnswer.getText().toString().length() > 0) {
@@ -94,13 +96,10 @@ public class SimpleArithFragment extends Fragment {
             }
             return false;
         });
-
-        // Load next question
-//        binding.nextQ.setOnClickListener(view -> nextQuestion());
     }
 
     /*
-    Check if a * b is equal to ans
+    Check if a * b is equal to ans given the arith state
      */
     private boolean checkAnswer(int a, int b, String ans) {
         int answer = Integer.parseInt(ans);
@@ -123,7 +122,7 @@ public class SimpleArithFragment extends Fragment {
     }
 
     /*
-    Replace the question with the next
+    Initialize the question from viewModel
      */
     public void initQuestion() {
         binding.editTextAnswer.getText().clear();
@@ -156,4 +155,6 @@ public class SimpleArithFragment extends Fragment {
         super.onStop();
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
     }
+
+
 }

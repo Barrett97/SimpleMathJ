@@ -21,7 +21,6 @@ public class SimpleArithViewModel extends ViewModel {
     private String sign;
 
     public void init() {
-
         _firstNumber.setValue(RandomNumber.generateTo(20));
         _secondNumber.setValue(RandomNumber.generateTo(20));
     }

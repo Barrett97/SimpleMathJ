@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 
 import static android.view.Gravity.CENTER;
 
+// Class needs data binding and to be converted to .kt
 public class AddSubBoardFragment extends Fragment {
 
     EditText cell00;
