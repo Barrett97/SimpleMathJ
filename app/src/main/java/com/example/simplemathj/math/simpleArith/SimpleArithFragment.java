@@ -40,9 +40,10 @@ public class SimpleArithFragment extends Fragment {
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(getViewLifecycleOwner());
 
-        if (viewModel.getSecondNumber() == null) {
-            viewModel.init();
-        }
+        viewModel.init();
+
+
+        System.out.println(viewModel.eq.getValue().toString());
 
         return binding.getRoot();
     }
@@ -55,16 +56,16 @@ public class SimpleArithFragment extends Fragment {
         setListeners();
     }
 
-    /*
+    /*11
     Observe for changes in the question
     */
     private void setObserver() {
-        viewModel.secondNumber.observe(getViewLifecycleOwner(), integer -> {
+        viewModel.eq.observe(getViewLifecycleOwner(), integer -> {
             binding.editTextAnswer.getText().clear();
             binding.rightWrongSymbol.setVisibility(View.INVISIBLE);
             binding.nextQ.setVisibility(View.INVISIBLE);
 
-            String question = viewModel.getFirstNumber() + viewModel.getSign() + viewModel.getSecondNumber();
+            String question = viewModel.getEquationState();
 
             binding.textViewQuestion.setText(question);
         });

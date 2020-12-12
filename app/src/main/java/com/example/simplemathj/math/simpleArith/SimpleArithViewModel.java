@@ -9,22 +9,36 @@ import androidx.lifecycle.ViewModel;
 
 public class SimpleArithViewModel extends ViewModel {
 
-    private MutableLiveData<String> _equation = new MutableLiveData<>();
-    public LiveData<String> equation = _equation;
+    private final MutableLiveData<EquationViewState> _eq = new MutableLiveData<>();
+    public LiveData<EquationViewState> eq = _eq;
 
-    private MutableLiveData<Integer> _firstNumber = new MutableLiveData<>();
-    public LiveData<Integer> firstNumber = _firstNumber;
-
-    private MutableLiveData<Integer> _secondNumber = new MutableLiveData<>();
-    public LiveData<Integer> secondNumber = _secondNumber;
+//    private MutableLiveData<String> _equation = new MutableLiveData<>();
+//    public LiveData<String> equation = _equation;
+//
+//    private MutableLiveData<Integer> _firstNumber = new MutableLiveData<>();
+//    public LiveData<Integer> firstNumber = _firstNumber;
+//
+//    private MutableLiveData<Integer> _secondNumber = new MutableLiveData<>();
+//    public LiveData<Integer> secondNumber = _secondNumber;
 
     private MathTopicsEnum _state;
 
     private String sign;
 
+    public String getEquationState() {
+        return eq.getValue().toString();
+    }
+
+
     public void init() {
-        _firstNumber.setValue(RandomNumber.generateTo(20));
-        _secondNumber.setValue(RandomNumber.generateTo(20));
+        _eq.setValue(new EquationViewState(
+                RandomNumber.generateTo(20),
+                RandomNumber.generateTo(20),
+                sign
+        ));
+
+//        _firstNumber.setValue(RandomNumber.generateTo(20));
+//        _secondNumber.setValue(RandomNumber.generateTo(20));
     }
 
     public void setState(MathTopicsEnum state) {
@@ -32,13 +46,13 @@ public class SimpleArithViewModel extends ViewModel {
         setSign(_state);
     }
 
-    public String getEquation() {
-        return getFirstNumber().toString() + getSign() + getSecondNumber().toString();
-    }
-
-    public void setEquation() {
-        _equation.setValue(getFirstNumber().toString() + getSign() + getSecondNumber().toString());
-    }
+//    public String getEquation() {
+//        return getFirstNumber().toString() + getSign() + getSecondNumber().toString();
+//    }
+//
+//    public void setEquation() {
+//        _equation.setValue(getFirstNumber().toString() + getSign() + getSecondNumber().toString());
+//    }
 
     private void setSign(MathTopicsEnum state) {
         switch(state) {
@@ -57,42 +71,56 @@ public class SimpleArithViewModel extends ViewModel {
         }
     }
 
-    public String getSign() {
-        return sign;
-    }
-
+//    public String getSign() {
+//        return sign;
+//    }
+//
     public MathTopicsEnum getState() {
         return _state;
     }
-
-    public void setFirstNumberRand() {
-        _firstNumber.setValue(RandomNumber.generateTo(20));
-    }
-
+//
+//    public void setFirstNumberRand() {
+//        _firstNumber.setValue(RandomNumber.generateTo(20));
+//    }
+//
     public Integer getFirstNumber() {
-        return firstNumber.getValue();
+        if (_eq.getValue() != null) {
+            return _eq.getValue().firstNumber;
+        } else {
+            return 0;
+        }
     }
-
-    public void setSecondNumberRand() {
-        _secondNumber.setValue(RandomNumber.generateTo(20));
-    }
-
+//
+//    public void setSecondNumberRand() {
+//        _secondNumber.setValue(RandomNumber.generateTo(20));
+//    }
+//
     public Integer getSecondNumber() {
-        return secondNumber.getValue();
+        if (_eq.getValue() != null) {
+            return _eq.getValue().secondNumber;
+        } else {
+            return 0;
+        }
     }
+//
+//    public void setFirstNumber(int x) {
+//        _firstNumber.setValue(x);
+//    }
+//
+//    public void setSecondNumber(int x) {
+//        _secondNumber.setValue(x);
+//    }
 
-    public void setFirstNumber(int x) {
-        _firstNumber.setValue(x);
-    }
-
-    public void setSecondNumber(int x) {
-        _secondNumber.setValue(x);
-    }
-
+    // todo:
     public void nextQuestion() {
-        _firstNumber.setValue(RandomNumber.generateTo(20));
-        _secondNumber.setValue(RandomNumber.generateTo(20));
-        setEquation();
+        if (_eq.getValue() != null) {
+            _eq.getValue().firstNumber = RandomNumber.generateTo(20);
+            _eq.getValue().secondNumber = RandomNumber.generateTo(20);
+        }
+        System.out.println(_eq.getValue().firstNumber);
+//        _firstNumber.setValue(RandomNumber.generateTo(20));
+//        _secondNumber.setValue(RandomNumber.generateTo(20));
+//        setEquation();
     }
 
 

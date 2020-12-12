@@ -24,7 +24,7 @@
                 android:id="@+id/textViewQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.equation}"
+                android:text="@{viewModel.eq.toString()}"
                 android:textSize="100sp"
                 android:gravity="center"
                 android:inputType="none"
