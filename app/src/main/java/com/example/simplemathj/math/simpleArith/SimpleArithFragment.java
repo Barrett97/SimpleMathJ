@@ -43,8 +43,6 @@ public class SimpleArithFragment extends Fragment {
 
         viewModel.init();
 
-        System.out.println(viewModel.eq.getValue().toString());
-
         return binding.getRoot();
     }
 
@@ -70,13 +68,11 @@ public class SimpleArithFragment extends Fragment {
 
     private void setListeners() {
 
-        // Listen for "enter" key
         binding.editTextAnswer.setOnKeyListener((view, i, keyEvent) -> {
             if (i == KeyEvent.KEYCODE_ENTER) {
-                if (binding.editTextAnswer.getText().toString().length() > 0) {
+                if (!binding.editTextAnswer.getText().toString().isEmpty()) {
                     binding.rightWrongSymbol.setVisibility(View.VISIBLE);
-                    if (checkAnswer(viewModel.getFirstNumber(),
-                            viewModel.getSecondNumber(),
+                    if (viewModel.checkAnswer(
                             binding.editTextAnswer.getText().toString())) {
                         binding.rightWrongSymbol.setText(R.string.check);
                         binding.rightWrongSymbol.setTextColor(Color.GREEN);
@@ -90,29 +86,6 @@ public class SimpleArithFragment extends Fragment {
             }
             return false;
         });
-    }
-
-    /*
-    Check if a * b is equal to ans given the arith state
-     */
-    private boolean checkAnswer(int a, int b, String ans) {
-        int answer = Integer.parseInt(ans);
-        boolean isCorrect = false;
-        switch (viewModel.getState()) {
-            case ADDITION:
-                isCorrect = MathChecker.add(a, b, answer);
-                break;
-            case MULTIPLICATION:
-                isCorrect = MathChecker.mult(a, b, answer);
-                break;
-            case SUBTRACTION:
-                isCorrect = MathChecker.sub(a, b, answer);
-                break;
-            case DIVISION:
-                isCorrect = MathChecker.div(a, b , answer);
-                break;
-        }
-        return isCorrect;
     }
 
     private void triggerKeyboard() {

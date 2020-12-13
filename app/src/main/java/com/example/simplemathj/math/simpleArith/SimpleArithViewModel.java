@@ -1,6 +1,7 @@
 package com.example.simplemathj.math.simpleArith;
 
 import com.example.simplemathj.math.MathTopicsEnum;
+import com.example.simplemathj.util.MathChecker;
 import com.example.simplemathj.util.RandomNumber;
 
 import androidx.lifecycle.LiveData;
@@ -58,26 +59,41 @@ public class SimpleArithViewModel extends ViewModel {
     }
 
     public Integer getFirstNumber() {
-        if (_eq.getValue() != null) {
-            return _eq.getValue().firstNumber;
-        } else {
-            return 0;
-        }
+        return eq.getValue().firstNumber;
     }
 
     public Integer getSecondNumber() {
-        if (_eq.getValue() != null) {
-            return _eq.getValue().secondNumber;
-        } else {
-            return 0;
-        }
+        return eq.getValue().secondNumber;
     }
 
     public void nextQuestion() {
-        if (_eq.getValue() != null) {
-            _eq.getValue().firstNumber = RandomNumber.generateTo(20);
-            _eq.getValue().secondNumber = RandomNumber.generateTo(20);
+
+        eq.getValue().firstNumber = RandomNumber.generateTo(20);
+        eq.getValue().secondNumber = RandomNumber.generateTo(20);
+
+        // forces livedata change to notify observable
+        _eq.setValue(_eq.getValue());
+    }
+
+    public boolean checkAnswer(String ans) {
+        int answer = Integer.parseInt(ans);
+        boolean isCorrect = false;
+        int a = eq.getValue().firstNumber;
+        int b = eq.getValue().secondNumber;
+        switch (getState()) {
+            case ADDITION:
+                isCorrect = MathChecker.add(a, b, answer);
+                break;
+            case MULTIPLICATION:
+                isCorrect = MathChecker.mult(a, b, answer);
+                break;
+            case SUBTRACTION:
+                isCorrect = MathChecker.sub(a, b, answer);
+                break;
+            case DIVISION:
+                isCorrect = MathChecker.div(a, b , answer);
+                break;
         }
-        _eq.setValue(_eq.getValue()); // forces change to notify observable
+        return isCorrect;
     }
 }
