@@ -22,7 +22,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 /*
-* This fragment contains the simple arithmetic questions
+* This fragment contains the view for the simple arithmetic operations:
+* addition, subtraction, multiplication, division.
 *
 */
 public class SimpleArithFragment extends Fragment {
@@ -56,9 +57,6 @@ public class SimpleArithFragment extends Fragment {
         setListeners();
     }
 
-    /*11
-    Observe for changes in the question
-    */
     private void setObserver() {
         viewModel.eq.observe(getViewLifecycleOwner(), integer -> {
             binding.editTextAnswer.getText().clear();
@@ -71,9 +69,6 @@ public class SimpleArithFragment extends Fragment {
         });
     }
 
-    /*
-    Set the listeners for this class
-     */
     private void setListeners() {
 
         // Listen for "enter" key
@@ -121,9 +116,6 @@ public class SimpleArithFragment extends Fragment {
         return isCorrect;
     }
 
-    /*
-    Pull up the keyboard
-     */
     private void triggerKeyboard() {
         binding.editTextAnswer.requestFocus();
         InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
