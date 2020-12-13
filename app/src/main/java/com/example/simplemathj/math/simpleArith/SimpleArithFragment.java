@@ -43,7 +43,6 @@ public class SimpleArithFragment extends Fragment {
 
         viewModel.init();
 
-
         System.out.println(viewModel.eq.getValue().toString());
 
         return binding.getRoot();

@@ -17,11 +17,13 @@ public class SimpleArithViewModel extends ViewModel {
     private String sign;
 
     public void init() {
-        _eq.setValue(new EquationViewState(
-                RandomNumber.generateTo(20),
-                RandomNumber.generateTo(20),
-                sign
-        ));
+        if (_eq.getValue() == null) {
+            _eq.setValue(new EquationViewState(
+                    RandomNumber.generateTo(20),
+                    RandomNumber.generateTo(20),
+                    sign
+            ));
+        }
     }
 
     public String getEquationState() {
@@ -31,6 +33,7 @@ public class SimpleArithViewModel extends ViewModel {
     public void setState(MathTopicsEnum state) {
         _state = state;
         setSign(_state);
+        _eq.setValue(null); // New question on operation change
     }
 
     private void setSign(MathTopicsEnum state) {
