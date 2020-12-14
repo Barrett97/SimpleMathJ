@@ -4,6 +4,8 @@ import com.example.simplemathj.math.MathTopicsEnum;
 import com.example.simplemathj.util.MathChecker;
 import com.example.simplemathj.util.RandomNumber;
 
+import java.util.Objects;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -28,13 +30,7 @@ public class SimpleArithViewModel extends ViewModel {
     }
 
     public String getEquationState() {
-        return eq.getValue().toString();
-    }
-
-    public void setState(MathTopicsEnum state) {
-        _state = state;
-        setSign(_state);
-        _eq.setValue(null); // New question on operation change
+        return Objects.requireNonNull(eq.getValue()).toString();
     }
 
     private void setSign(MathTopicsEnum state) {
@@ -54,22 +50,20 @@ public class SimpleArithViewModel extends ViewModel {
         }
     }
 
+    public void setState(MathTopicsEnum state) {
+        _state = state;
+        setSign(_state);
+        _eq.setValue(null); // New question on operation change
+    }
+
     public MathTopicsEnum getState() {
         return _state;
     }
 
-    public Integer getFirstNumber() {
-        return eq.getValue().firstNumber;
-    }
-
-    public Integer getSecondNumber() {
-        return eq.getValue().secondNumber;
-    }
-
     public void nextQuestion() {
 
-        eq.getValue().firstNumber = RandomNumber.generateTo(20);
-        eq.getValue().secondNumber = RandomNumber.generateTo(20);
+        Objects.requireNonNull(_eq.getValue()).firstNumber = RandomNumber.generateTo(20);
+        _eq.getValue().secondNumber = RandomNumber.generateTo(20);
 
         // forces livedata change to notify observable
         _eq.setValue(_eq.getValue());
@@ -78,8 +72,8 @@ public class SimpleArithViewModel extends ViewModel {
     public boolean checkAnswer(String ans) {
         int answer = Integer.parseInt(ans);
         boolean isCorrect = false;
-        int a = eq.getValue().firstNumber;
-        int b = eq.getValue().secondNumber;
+        int a = Objects.requireNonNull(_eq.getValue()).firstNumber;
+        int b = _eq.getValue().secondNumber;
         switch (getState()) {
             case ADDITION:
                 isCorrect = MathChecker.add(a, b, answer);

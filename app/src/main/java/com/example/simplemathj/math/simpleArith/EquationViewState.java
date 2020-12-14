@@ -1,9 +1,10 @@
 package com.example.simplemathj.math.simpleArith;
 
 public class EquationViewState {
-    int firstNumber = 0;
-    int secondNumber = 0;
-    String arithmetic = "";
+
+    int firstNumber;
+    int secondNumber;
+    String arithmetic;
 
     EquationViewState(int firstNumber, int secondNumber, String arithmetic) {
         this.firstNumber = firstNumber;
