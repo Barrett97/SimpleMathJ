@@ -19,7 +19,7 @@
 
         <action
             android:id="@+id/action_TopicFragment_to_LanguageFragment"
-            app:destination="@id/LanguageFragment"
+            app:destination="@id/LangTopicFrag"
             app:enterAnim="@anim/fragment_fade_enter"/>
 
         <action
@@ -54,10 +54,34 @@
     </fragment>
 
     <fragment
-        android:id="@+id/LanguageFragment"
+        android:id="@+id/LangTopicFrag"
         android:name="com.example.simplemathj.language.LangTopicFrag"
         tools:layout="@layout/fragment_lang"
         android:label="@string/lang_fragment_label">
+
+        <action
+            android:id="@+id/action_LangTopicFragment_to_VocabListFragment"
+            app:destination="@id/VocabListFragment"
+            app:enterAnim="@anim/fragment_open_enter" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/VocabListFragment"
+        android:name="com.example.simplemathj.language.VocabListFrag"
+        tools:layout="@layout/fragment_vocab">
+
+        <action
+            android:id="@+id/action_VocabList_to_VocabDisplay"
+            app:destination="@id/VacabDisplayFragment"
+            app:enterAnim="@anim/fragment_open_enter" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/VacabDisplayFragment"
+        android:name="com.example.simplemathj.language.VocabDisplayFrag"
+        tools:layout="@layout/fragment_vocab_display">
 
     </fragment>
 

@@ -11,20 +11,11 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/vocabButton"
+            android:id="@+id/stop_words"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="@string/vocab"
+            android:text="@string/stop_words"
             style="@style/MainButtons"/>
-
-<!--        <Button-->
-<!--            android:id="@+id/gr2Button"-->
-<!--            android:backgroundTint="@android:color/holo_orange_light"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:text="@string/gr1"-->
-<!--            android:layout_below="@id/gr1Button"-->
-<!--            style="@style/MainButtons"/>-->
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

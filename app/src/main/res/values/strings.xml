@@ -32,6 +32,7 @@
 
     <!--Language Fragment-->
     <string name="vocab">Vocabulary</string>
+    <string name="stop_words">Stop Words</string>
     <string name="gr1">Grade 1</string>
     <string name="gr2">Grade 2</string>
 

@@ -23,7 +23,6 @@ public class MathTopicsFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         simpleArithViewModel = new ViewModelProvider(requireActivity()).get(SimpleArithViewModel.class);
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_math, container, false);
     }
 
@@ -31,35 +30,35 @@ public class MathTopicsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         view.findViewById(R.id.aplusb).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathTopicsFragment.this)
+            NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
             simpleArithViewModel.setState(MathTopicsEnum.ADDITION);
         });
 
         view.findViewById(R.id.asubb).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathTopicsFragment.this)
+            NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
             simpleArithViewModel.setState(MathTopicsEnum.SUBTRACTION);
         });
 
         view.findViewById(R.id.axb).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathTopicsFragment.this)
+            NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
             simpleArithViewModel.setState(MathTopicsEnum.MULTIPLICATION);
         });
 
         view.findViewById(R.id.adivb).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathTopicsFragment.this)
+            NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TopicFragment_to_ThirdFragment);
 
             simpleArithViewModel.setState(MathTopicsEnum.DIVISION);
         });
 
         view.findViewById(R.id.addBoard).setOnClickListener(v -> {
-            NavHostFragment.findNavController(MathTopicsFragment.this)
+            NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TopicFragment_to_AddBoardFragment);
         });
 
