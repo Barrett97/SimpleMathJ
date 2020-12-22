@@ -34,7 +34,6 @@ public class TopicFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentTopicBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_topic, container, false);
-//        return inflater.inflate(R.layout.fragment_topic, container, false);
         return binding.getRoot();
     }
 
@@ -75,17 +74,17 @@ public class TopicFragment extends Fragment {
     public void navToMathTopics() {
         System.out.println("WORKING");
         NavHostFragment.findNavController(TopicFragment.this)
-                .navigate(R.id.action_TopicFragment_to_SecondFragment);
+                .navigate(R.id.action_TopicFragment_to_MathFragment);
     }
 
     private void setListeners(View view) {
-        view.findViewById(R.id.mathButton).setOnClickListener(view1 ->
+        view.findViewById(R.id.mathButton).setOnClickListener(v ->
                 NavHostFragment.findNavController(TopicFragment.this)
-                                .navigate(R.id.action_TopicFragment_to_SecondFragment));
+                                .navigate(R.id.action_TopicFragment_to_MathFragment));
 
-        view.findViewById(R.id.langButton).setOnClickListener(view12 ->
+        view.findViewById(R.id.langButton).setOnClickListener(v ->
                 NavHostFragment.findNavController(TopicFragment.this)
-                               .navigate(R.id.action_TopicFragment_to_SecondFragment));
+                               .navigate(R.id.action_TopicFragment_to_LanguageFragment));
 
         // retrieves random quote
         quoteCard.setOnClickListener(v -> {

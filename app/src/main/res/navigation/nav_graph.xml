@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
@@ -12,9 +13,14 @@
         tools:layout="@layout/fragment_topic">
 
         <action
-            android:id="@+id/action_TopicFragment_to_SecondFragment"
+            android:id="@+id/action_TopicFragment_to_MathFragment"
             app:destination="@id/MathFragment"
             app:enterAnim="@anim/fragment_fade_enter" />
+
+        <action
+            android:id="@+id/action_TopicFragment_to_LanguageFragment"
+            app:destination="@id/LanguageFragment"
+            app:enterAnim="@anim/fragment_fade_enter"/>
 
         <action
             android:id="@+id/action_TopicFragment_to_SettingsFragment"
@@ -32,7 +38,7 @@
     <fragment
         android:id="@+id/MathFragment"
         android:name="com.example.simplemathj.math.MathTopicsFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/math_fragment_label"
         tools:layout="@layout/fragment_math">
 
         <action
@@ -44,6 +50,15 @@
             android:id="@+id/action_TopicFragment_to_AddBoardFragment"
             app:destination="@id/AddBoardFragment"
             app:enterAnim="@anim/fragment_open_enter" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/LanguageFragment"
+        android:name="com.example.simplemathj.language.LangTopicFrag"
+        tools:layout="@layout/fragment_lang"
+        android:label="@string/lang_fragment_label">
+
     </fragment>
 
     <fragment
@@ -56,7 +71,7 @@
 
     <fragment
         android:id="@+id/AddBoardFragment"
-        android:name="com.example.simplemathj.math.AddSubBoardFragment"
+        android:name="com.example.simplemathj.math.boardArith.AddSubBoardFragment"
         android:label="Board"
         tools:layout="@layout/fragment_addition_board">
 

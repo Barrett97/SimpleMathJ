@@ -3,7 +3,8 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="math_fragment_label">Math</string>
+    <string name="lang_fragment_label">Language</string>
     <string name="third_fragment_label">Simple Arithmetic</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -30,6 +31,7 @@
     <string name="addBoard">Multi Digit Addition</string>
 
     <!--Language Fragment-->
+    <string name="vocab">Vocabulary</string>
     <string name="gr1">Grade 1</string>
     <string name="gr2">Grade 2</string>
 

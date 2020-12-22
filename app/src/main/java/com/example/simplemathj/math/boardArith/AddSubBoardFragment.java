@@ -1,4 +1,4 @@
-package com.example.simplemathj.math;
+package com.example.simplemathj.math.boardArith;
 
 import android.graphics.Color;
 

@@ -8,15 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Gravity;
 
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.example.simplemathj.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
