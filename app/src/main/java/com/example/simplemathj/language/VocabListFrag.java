@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class VocabListFrag extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -23,9 +24,8 @@ public class VocabListFrag extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.stop_words).setOnClickListener(v -> {
-            NavHostFragment.findNavController(this)
-                    .navigate(R.id.action_VocabList_to_VocabDisplay);
-        });
+        view.findViewById(R.id.stop_words).setOnClickListener(v ->
+                NavHostFragment.findNavController(this)
+                .navigate(R.id.action_VocabList_to_VocabDisplay));
     }
 }
