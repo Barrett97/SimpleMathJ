@@ -13,32 +13,43 @@ import com.example.simplemathj.quote.QuoteController;
 import com.example.simplemathj.quote.SetQuoteListener;
 import com.example.simplemathj.util.RandomNumber;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavHost;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class TopicFragment extends Fragment {
 
-    private static final String TAG = "QUOTE";
+    private static final String TAG = "[TopicFragment]";
 
     TextView quote;
     TextView author;
     View quoteCard;
     List<Quote> quoteList;
+
     QuoteController quoteController;
     SetQuoteListener setQuoteListener;
 
+    NavHostFragment navHostFragment;
+    NavController navController;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        FragmentTopicBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_topic, container, false);
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        FragmentTopicBinding binding =
+                DataBindingUtil.inflate(inflater, R.layout.fragment_topic, container, false);
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        navController = ((MainActivity)getActivity()).getNavController();
 
         init();
         setViews(view);
@@ -72,19 +83,19 @@ public class TopicFragment extends Fragment {
 
     // TODO: currently not being called properly in fragment_topic.xml
     public void navToMathTopics() {
-        System.out.println("WORKING");
+        Log.d(TAG, "navToMathTopics()");
         NavHostFragment.findNavController(TopicFragment.this)
                 .navigate(R.id.action_TopicFragment_to_MathFragment);
     }
 
     private void setListeners(View view) {
-        view.findViewById(R.id.mathButton).setOnClickListener(v ->
-                NavHostFragment.findNavController(TopicFragment.this)
-                                .navigate(R.id.action_TopicFragment_to_MathFragment));
+        view.findViewById(R.id.mathButton).setOnClickListener(v -> {
+            Log.i(TAG, "math button");
+            navController.navigate(R.id.action_TopicFragment_to_MathFragment);
+        });
 
         view.findViewById(R.id.langButton).setOnClickListener(v ->
-                NavHostFragment.findNavController(TopicFragment.this)
-                               .navigate(R.id.action_TopicFragment_to_LanguageFragment));
+                navController.navigate(R.id.action_TopicFragment_to_LanguageFragment));
 
         // retrieves random quote
         quoteCard.setOnClickListener(v -> {
@@ -103,12 +114,4 @@ public class TopicFragment extends Fragment {
             }
         });
     }
-
-    // TODO: retrieve last or random quote
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-//        getParentFragmentManager().putFragment(outstate, "TopicFragment", TopicFragment);
-    }
-
 }

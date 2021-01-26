@@ -17,12 +17,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class VocabDisplayFrag extends Fragment {
 
-    private VocabViewModel vocabViewModel;
+    private VocabViewModel vocabViewModel = new ViewModelProvider(requireActivity()).get(VocabViewModel.class);
     private FragmentVocabDisplayBinding binding;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         vocabViewModel = new ViewModelProvider(requireActivity()).get(VocabViewModel.class);
         binding = FragmentVocabDisplayBinding.inflate(inflater);
         binding.setLifecycleOwner(this);

@@ -6,10 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.view.Gravity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         drawer = findViewById(R.id.drawer);
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -37,8 +38,21 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(false);
         }
 
-        toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(Gravity.LEFT));
+        toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(GravityCompat.START));
 
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        navController = navHostFragment.getNavController();
+
+        TopicFragment topicFragment = new TopicFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.nav_host_fragment, topicFragment);
+        ft.addToBackStack(null);
+        ft.commit();
+
+    }
+
+    public NavController getNavController() {
+        return navController;
     }
 
     @Override
@@ -47,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
