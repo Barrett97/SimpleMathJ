@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 public class VocabViewModel extends ViewModel {
 
-    private MutableLiveData<String> _word = new MutableLiveData<>();
+    private final MutableLiveData<String> _word = new MutableLiveData<>();
     public LiveData<String> word = _word;
 
 }
