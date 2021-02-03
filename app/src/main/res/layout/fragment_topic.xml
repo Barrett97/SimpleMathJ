@@ -27,7 +27,6 @@
                 android:layout_height="80dp"
                 android:text="@string/math"
                 android:textSize="15sp"
-                style="@style/MainButtons"
                 />
 
             <Button
@@ -36,7 +35,7 @@
                 android:layout_height="80dp"
                 android:text="@string/language"
                 android:textSize="15sp"
-                style="@style/MainButtons" />
+                />
 
         </LinearLayout>
 
@@ -45,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

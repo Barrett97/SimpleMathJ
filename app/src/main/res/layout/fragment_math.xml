@@ -18,48 +18,42 @@
                 android:id="@+id/aplusb"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/aplusb"
-                style="@style/MainButtons"/>
+                android:text="@string/aplusb" />
 
             <Button
                 android:id="@+id/asubb"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:text="@string/asubb"
-                android:layout_below="@id/aplusb"
-                style="@style/MainButtons"/>
+                android:layout_below="@id/aplusb" />
 
             <Button
                 android:id="@+id/axb"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:text="@string/axb"
-                android:layout_below="@id/asubb"
-                style="@style/MainButtons" />
+                android:layout_below="@id/asubb" />
 
             <Button
                 android:id="@+id/adivb"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:text="@string/adivb"
-                android:layout_below="@id/axb"
-                style="@style/MainButtons" />
+                android:layout_below="@id/axb" />
 
             <Button
                 android:id="@+id/addBoard"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:text="@string/addBoard"
-                android:layout_below="@id/adivb"
-                style="@style/MainButtons"/>
+                android:layout_below="@id/adivb" />
 
             <Button
                 android:id="@+id/multBoard"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:text="@string/multBoard"
-                android:layout_below="@id/addBoard"
-                style="@style/MainButtons"/>
+                android:layout_below="@id/addBoard" />
 
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

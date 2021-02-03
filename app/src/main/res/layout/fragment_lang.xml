@@ -12,16 +12,14 @@
             android:id="@+id/vocabButton"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="@string/vocab"
-            style="@style/MainButtons"/>
+            android:text="@string/vocab"/>
 
         <Button
             android:id="@+id/grammar_button"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="@string/grammar"
-            android:layout_below="@id/vocabButton"
-            style="@style/MainButtons"/>
+            android:layout_below="@id/vocabButton"/>
 
 <!--        <Button-->
 <!--            android:id="@+id/gr2Button"-->

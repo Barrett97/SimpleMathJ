@@ -21,7 +21,6 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.NavHost;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class TopicFragment extends Fragment {
@@ -40,7 +39,8 @@ public class TopicFragment extends Fragment {
     NavController navController;
 
     @Override
-    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(
+            @NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentTopicBinding binding =
                 DataBindingUtil.inflate(inflater, R.layout.fragment_topic, container, false);
         return binding.getRoot();

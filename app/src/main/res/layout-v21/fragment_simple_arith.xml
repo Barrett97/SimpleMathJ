@@ -41,7 +41,7 @@
                 android:gravity="center"
                 android:inputType="numberSigned"
                 android:layout_marginBottom="5dp"
-                android:background="@android:color/holo_orange_light"/>
+                android:background="?android:attr/colorAccent"/>
 
             <TextView
                 android:id="@+id/rightWrongSymbol"
@@ -50,10 +50,9 @@
                 android:textSize="50sp"
                 android:gravity="end"
                 android:layout_below="@id/textViewQuestion"
-                android:layout_marginRight="@dimen/fab_margin"/>
+                android:layout_marginEnd="@dimen/fab_margin"/>
 
             <Button
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nextQ"
@@ -61,7 +60,7 @@
                 android:id="@+id/nextQ"
                 android:onClick="@{() -> viewModel.nextQuestion()}"
                 android:layout_below="@+id/editTextAnswer"
-                style="@style/MainButtons" />
+                android:textColor="?android:attr/colorAccent" />
 
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
