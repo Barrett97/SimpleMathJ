@@ -1,7 +1,6 @@
 package com.example.simplemathj.math.boardArith;
 
 import android.graphics.Color;
-
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -55,7 +54,6 @@ public class AddSubBoardFragment extends Fragment {
 
     TextView[][] board = new TextView[][]{};
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,7 +68,6 @@ public class AddSubBoardFragment extends Fragment {
 
         init(view);
         populateEditTexts();
-//        populate2dArray();
 
         checkAns.setOnClickListener(v -> {
            if (checkAnswer()) {
@@ -159,19 +156,6 @@ public class AddSubBoardFragment extends Fragment {
         }
     }
 
-    private void populate2dArray() {
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0, k = 0; j < 5; j++, k++) {
-                if (k < 8) {
-                    board[i][j] = textViewNumbers.get(k);
-                    k++;
-                } else {
-                    return;
-                }
-            }
-        }
-    }
-
     private boolean checkAnswer() {
         for (int i = 4; i >= 0; i--) {
             int colRes = 0;
@@ -187,13 +171,5 @@ public class AddSubBoardFragment extends Fragment {
 
     private int getOnesDigit(int x) {
         return x % 10;
-    }
-
-    private int addColumn(int x, int y, int z) {
-        return x+y+z;
-    }
-
-    private boolean checkCarry(int x, int y) {
-        return (x + y) > 9;
     }
 }
